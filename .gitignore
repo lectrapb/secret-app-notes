@@ -1,0 +1,26 @@
+# compiled output
+secret-app/dist
+secret-app/node_modules
+secret-app/tmp
+secret-app/out-tsc
+# IDEs and editors
+### VS Code ###
+secret-app/.vscode/
+secret-app/.vscode/*
+secret-app/!.vscode/settings.json
+secret-app/!.vscode/tasks.json
+secret-app/!.vscode/launch.json
+secret-app/!.vscode/extensions.json
+secret-app/.history/*
+### IDEA #####
+.idea
+secretServer/.idea
+secretServer/*.iws
+secretServer/*.iml
+secretServer/*.ipr
+secretServer/HELP.md
+secretServer/target/
+secretServer/!.mvn/wrapper/maven-wrapper.jar
+secretServer/!**/src/main/**/target/
+secretServer/!**/src/test/**/target/
+secretServer/**/src/main/resources/application.yaml
