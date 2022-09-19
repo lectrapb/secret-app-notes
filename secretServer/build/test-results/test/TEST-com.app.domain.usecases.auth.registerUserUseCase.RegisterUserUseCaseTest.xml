@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.app.domain.usecases.auth.registerUserUseCase.RegisterUserUseCaseTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-09-19T21:37:59" hostname="ingeniero-lubuntu20" time="46.288">
+  <properties/>
+  <testcase name="register_usercase_ok()" classname="com.app.domain.usecases.auth.registerUserUseCase.RegisterUserUseCaseTest" time="46.288"/>
+  <system-out><![CDATA[16:38:03.298 [Test worker] DEBUG reactor.util.Loggers - Using Slf4j logging framework
+com.app.domain.model.user.UserRegisterResponseDTO@3af356f
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
