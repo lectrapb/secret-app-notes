@@ -1,2 +1,1 @@
-V16:38:03.298 [Test worker] DEBUG reactor.util.Loggers - Using Slf4j logging framework
-:com.app.domain.model.user.UserRegisterResponseDTO@3af356f
+V16:30:01.539 [Test worker] DEBUG reactor.util.Loggers - Using Slf4j logging framework

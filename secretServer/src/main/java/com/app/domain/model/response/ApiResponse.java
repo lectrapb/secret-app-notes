@@ -30,6 +30,11 @@ public class ApiResponse {
                 new Data[0];
         return this;
     }
+
+    public ApiResponse setMessage(String code  ){
+        this.message = Constant.getSuccesMessage(code);
+        return this;
+    }
     private ApiResponse setErrors(String codeError){
         Error error = Constant.getErrorMessage(codeError);
         this.errors = new Error[]{error};
