@@ -32,10 +32,12 @@ public class ApiResponse {
     }
 
     public ApiResponse setMessage(String code  ){
+        System.out.println("apiresponse " + code);
         this.message = Constant.getSuccesMessage(code);
         return this;
     }
     private ApiResponse setErrors(String codeError){
+        System.out.println("apiresponse " + codeError);
         Error error = Constant.getErrorMessage(codeError);
         this.errors = new Error[]{error};
         return this;

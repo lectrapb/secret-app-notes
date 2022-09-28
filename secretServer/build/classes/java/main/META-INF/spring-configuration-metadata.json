@@ -8,7 +8,22 @@
   ],
   "properties": [
     {
+      "name": "bd.sp.create-secret-pass",
+      "type": "java.lang.String",
+      "sourceType": "com.app.config.DataBaseConfig"
+    },
+    {
       "name": "bd.sp.create-user",
+      "type": "java.lang.String",
+      "sourceType": "com.app.config.DataBaseConfig"
+    },
+    {
+      "name": "bd.sp.delete-secret-pass",
+      "type": "java.lang.String",
+      "sourceType": "com.app.config.DataBaseConfig"
+    },
+    {
+      "name": "bd.sp.update-secret-pass",
       "type": "java.lang.String",
       "sourceType": "com.app.config.DataBaseConfig"
     }

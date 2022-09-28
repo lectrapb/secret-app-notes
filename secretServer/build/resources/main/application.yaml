@@ -1,0 +1,17 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: api-secret-server
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/secret_app_notes?sessionVariables=sql_mode='NO_ENGINE_SUBSTITUTION'&jdbcCompliantTruncation=false
+    username: root
+    password: tupassword
+
+bd:
+  sp:
+    createUser: CALL  secret_server.SP_CREATE_USER(:id,:name,:email,:password,:image,:role,:google);
+    createSecretPass: CALL insert_login(:in_secret_password_id,:in_secret_password_name,:in_secret_password_username,:in_secret_password_password,:in_secret_password_URI,:in_user_uid_fk);
+    deleteSecretPass: CALL SP_delete_login(:in_secret_password_id);
+    updateSecretPass: CALL SP_update_login(:in_secret_password_id,:in_secret_password_name,:in_secret_password_username,:in_secret_password_password,:in_secret_password_URI);
