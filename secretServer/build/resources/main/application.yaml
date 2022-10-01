@@ -5,10 +5,11 @@ spring:
     name: api-secret-server
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://74.207.224.64:5002/test_database?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    url: jdbc:mysql://74.207.224.64:5002/secret_server?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
     username: ingeniero
     password: raspberry
 
 bd:
   sp:
     createUser: CALL  secret_server.SP_CREATE_USER(:id,:name,:email,:password,:image,:role,:google);
+    searchUserByEmail: CALL secret_server.SP_SEARCH_USER(:email,:id);

@@ -10,4 +10,5 @@ import org.springframework.context.annotation.Configuration;
 public class DataBaseConfig {
 
     private String createUser;
+    private String searchUserByEmail;
 }

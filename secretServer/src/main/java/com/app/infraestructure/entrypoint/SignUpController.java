@@ -23,20 +23,20 @@ public class SignUpController {
 
     @PostMapping(Constant.PATH_USER_SIGNUP)
     public Mono<ResponseEntity<ApiResponse>> signUp(@RequestBody UserSignUpResquestDTO request){
-          System.out.println(request);
+
              return Mono.fromCallable(() -> request)
                              .flatMap(useCase::registerUser)
                              .map(p -> ResponseEntity
-                             .status(HttpStatus.CREATED)
-                             .contentType(MediaType.APPLICATION_JSON)
-                             .body(new ApiResponse().createOnSuccess().setMessage(p.getCode())))
+                                     .status(HttpStatus.CREATED)
+                                     .contentType(MediaType.APPLICATION_JSON)
+                                     .body(new ApiResponse().createOnSuccess().setMessage(p.getCode())))
                              .onErrorResume(thr -> Mono.just(thr)
-                                          .flatMap(e ->{
-                                              ApiResponse apiResponse = new ApiResponse().createOnError(e.getMessage());
-                                              return Mono.just(ResponseEntity
-                                                                .badRequest()
-                                                                .body(apiResponse));
-                                          }));
+                                              .flatMap(e ->{
+                                                  ApiResponse apiResponse = new ApiResponse().createOnError(e.getMessage());
+                                                  return Mono.just(ResponseEntity
+                                                                    .badRequest()
+                                                                    .body(apiResponse));
+                                              }));
 
     }
 }

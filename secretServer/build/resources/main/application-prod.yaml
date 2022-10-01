@@ -1,1 +1,15 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: api-secret-server
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://locahost:3033/secret_server?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: user
+    password: 1234567
 
+bd:
+  sp:
+    createUser: CALL  secret_server.SP_CREATE_USER(:id,:name,:email,:password,:image,:role,:google);
+    searchUserByEmail: CALL secret_server.SP_SEARCH_USER(:email,:id);
