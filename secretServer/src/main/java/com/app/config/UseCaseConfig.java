@@ -1,6 +1,6 @@
 package com.app.config;
 
-import com.app.domain.usecases.auth.secretPassUseCase.SecretPassUseCase;
+import com.app.domain.usecases.secrets.secretPassUseCase.SecretPassUseCase;
 import com.app.domain.usecases.auth.signUpUseCase.SignUpUseCase;
 import com.app.infraestructure.portsadapters.rds.adapter.SecretPassRepositoryAdapter;
 import com.app.infraestructure.portsadapters.rds.adapter.UserRepositoryAdapter;

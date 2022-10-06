@@ -29,10 +29,10 @@ public class Constant {
      //ERROR CODES
      public static final String ERROR_MISSING_ARGUMENTS_CODE = "ER-401";
      public static final String ERROR_SIGNUP_USER_CODE = "ER-402";
-     public static final String ERROR_SECRET_PASS_CODE = "ER-402";
+     public static final String ERROR_SECRET_PASS_CODE = "ER-450";
      //SUCCESS-CODES
      public static final String SUCCESSFUL_SIGNUP_USER_CODE = "800-1";
-     public static final String SUCCESSFUL_SECRET_PASSWORD_CODE = "800-1";
+     public static final String SUCCESSFUL_SECRET_PASSWORD_CODE = "850-1";
      public static final String SUCCESSFUL_LOGIN_USER_CODE = "800-2";
 
     public static final Map<String, Error> errorMessages = new HashMap<>();

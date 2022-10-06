@@ -1,4 +1,4 @@
-package com.app.domain.usecases.auth.secretPassUseCase;
+package com.app.domain.usecases.secrets.secretPassUseCase;
 
 import com.app.domain.model.secretPassword.secretDeleteRequestDTO;
 import com.app.domain.model.secretPassword.secretPassword;
@@ -11,7 +11,7 @@ public class MapperSecPass {
 
     public static secretPassword toSecretPass(secretPasswordRequestDTO requestDTO){
         secretPassword password = new secretPassword();
-
+        //validación si es null
         password.setId(UUID.randomUUID().toString());
         password.setName(requestDTO.getName());
         password.setUsername(requestDTO.getUsername());
@@ -23,6 +23,7 @@ public class MapperSecPass {
     }
 
     public static secretPassword toDeletePass(secretDeleteRequestDTO requestDTO){
+        //exception
         secretPassword password = new secretPassword();
 
         password.setId(requestDTO.getId());

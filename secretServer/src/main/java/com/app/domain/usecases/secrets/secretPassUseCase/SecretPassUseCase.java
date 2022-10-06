@@ -1,4 +1,4 @@
-package com.app.domain.usecases.auth.secretPassUseCase;
+package com.app.domain.usecases.secrets.secretPassUseCase;
 
 import com.app.config.BusinessException;
 import com.app.domain.model.secretPassword.gateway.SecretPasswordRepository;
@@ -24,6 +24,8 @@ public class SecretPassUseCase {
                 .map(secretPasswordRepository::save)
                 .flatMap(requestDTO -> prepareOkResponse());
 
+        //Test nulos, camino feliz, nulo en campos no nulos
+
     }
 
     public Mono<secretPasswordResponseDTO> deletePassword(secretDeleteRequestDTO deleteRequestDTO){
@@ -41,7 +43,7 @@ public class SecretPassUseCase {
         return Mono.fromCallable(()-> updateRequestDTO)
                 .switchIfEmpty(Mono.error(new BusinessException(Constant.ERROR_MISSING_ARGUMENTS_CODE)))
                 .map(MapperSecPass::toUpdatePass)
-                .onErrorResume(e -> Mono.error(new BusinessException(e.getMessage())))
+                .onErrorResume(e -> Mono.error(new BusinessException(e.getMessage()))) //manejar exception
                 .map(secretPasswordRepository::update)
                 .flatMap(requestDTO -> prepareOkResponse());
 
