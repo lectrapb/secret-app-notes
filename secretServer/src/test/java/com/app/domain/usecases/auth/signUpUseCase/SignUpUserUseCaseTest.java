@@ -13,7 +13,7 @@ import reactor.test.StepVerifier;
 
 import static org.mockito.Mockito.*;
 
-class RegisterUserUseCaseTest {
+class SignUpUserUseCaseTest {
 
     private UserSignUpRepository userRepository;
 
@@ -26,7 +26,7 @@ class RegisterUserUseCaseTest {
     }
 
     @Test
-    void register_usercase_null() {
+    void user_signup_null_test() {
 
         var response = useCase.registerUser(null);
         StepVerifier.create(response)
@@ -36,7 +36,7 @@ class RegisterUserUseCaseTest {
 
     }
     @Test
-    void register_usercase_emailNull(){
+    void user_signup_email_null_test(){
 
         var response = useCase.registerUser(getRequestBadEmailDTO());
         StepVerifier.create(response)
@@ -45,7 +45,7 @@ class RegisterUserUseCaseTest {
     }
 
     @Test
-    void register_usercase_ok() {
+    void user_signup_ok_test() {
 
         when(userRepository.save(isA(User.class))).thenReturn(Mono.empty());
         var response = useCase.registerUser(getResquestDTO());

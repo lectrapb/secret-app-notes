@@ -1,6 +1,9 @@
 package com.app.config;
 
 import com.app.domain.usecases.secrets.secretPassUseCase.SecretPassUseCase;
+import com.app.domain.model.token.gateway.TokenService;
+import com.app.domain.model.user.gateway.UserSearchRepository;
+import com.app.domain.usecases.auth.loginUserUseCase.LoginUseCase;
 import com.app.domain.usecases.auth.signUpUseCase.SignUpUseCase;
 import com.app.infraestructure.portsadapters.rds.adapter.SecretPassRepositoryAdapter;
 import com.app.infraestructure.portsadapters.rds.adapter.UserRepositoryAdapter;
@@ -18,8 +21,12 @@ public class UseCaseConfig {
     }
 
     @Bean
-    public SecretPassUseCase secretPassUseCase(SecretPassRepositoryAdapter secretPasswordRepository){
+    public SecretPassUseCase secretPassUseCase(SecretPassRepositoryAdapter secretPasswordRepository) {
         return new SecretPassUseCase(secretPasswordRepository);
+    }
+    public LoginUseCase loginUseCase(UserSearchRepository userSearchRepository, TokenService tokenService){
+
+        return new LoginUseCase(userSearchRepository, tokenService);
     }
 
 }

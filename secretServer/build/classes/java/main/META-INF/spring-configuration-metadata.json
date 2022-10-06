@@ -18,12 +18,16 @@
       "sourceType": "com.app.config.DataBaseConfig"
     },
     {
+<<<<<<< HEAD
       "name": "bd.sp.delete-secret-pass",
       "type": "java.lang.String",
       "sourceType": "com.app.config.DataBaseConfig"
     },
     {
       "name": "bd.sp.update-secret-pass",
+=======
+      "name": "bd.sp.search-user-by-email",
+>>>>>>> 310729ccf65990f3f3bb04b4c3b620ba37e5ded0
       "type": "java.lang.String",
       "sourceType": "com.app.config.DataBaseConfig"
     }
