@@ -16,6 +16,7 @@ public class Constant {
     public static final String PATH_SECRET_PASS_REGISTER = "/api/secret-server/secret/register";
     public static final String PATH_SECRET_PASS_DELETE = "/api/secret-server/secret/delete";
     public static final String PATH_SECRET_PASS_UPDATE = "/api/secret-server/secret/update";
+    public static final String PATH_SECRET_PASS_SELECT = "/api/secret-server/secret/select";
 
 
      //APPLICATION-TITLES
@@ -25,7 +26,10 @@ public class Constant {
      //APPLICATION-DESCRIPTIONS
     public static final String DESCRIPTION_SUCCESSFUL_SIGN_UP =" Successful user signup  ";
     public static final String DESCRIPTION_SUCCESSFUL_LOGIN =" Successful user login  ";
-    public static final String DESCRIPTION_SUCCESSFUL_SECRET_PASSWORD =" Successful secret password  ";
+    public static final String DESCRIPTION_SUCCESSFUL_SECRET_PASSWORD =" Successful register secret password  ";
+    public static final String DESCRIPTION_SUCCESSFUL_DELETE_PASSWORD =" Successful delete secret password  ";
+    public static final String DESCRIPTION_SUCCESSFUL_SELECT_PASSWORD =" Successful select secret password  ";
+    public static final String DESCRIPTION_SUCCESSFUL_UPDATE_PASSWORD =" Successful update secret password  ";
      //ERROR CODES
      public static final String ERROR_MISSING_ARGUMENTS_CODE = "ER-401";
      public static final String ERROR_SIGNUP_USER_CODE = "ER-402";
@@ -35,10 +39,14 @@ public class Constant {
      //SUCCESS-CODES
      public static final String SUCCESSFUL_SIGNUP_USER_CODE = "800-1";
      public static final String SUCCESSFUL_SECRET_PASSWORD_CODE = "850-1";
+     public static final String SUCCESSFUL_DELETE_PASSWORD_CODE = "851-1";
+     public static final String SUCCESSFUL_SELECT_PASSWORD_CODE = "852-1";
+     public static final String SUCCESSFUL_UPDATE_PASSWORD_CODE = "853-1";
      public static final String SUCCESSFUL_LOGIN_USER_CODE = "800-2";
 
      //APP-TYPES
     public static final String LOGIN_AUTHORITY = "LOGIN_AUTHORITY";
+    public static final String SECRET_SELECT = "SECRET_SELECT";
 
     public static final Map<String, Error> errorMessages = new HashMap<>();
     public static final Map<String, Message> successfulMessages = new HashMap<>();
@@ -61,6 +69,12 @@ public class Constant {
                 new Message(PATH_USER_LOGIN, DESCRIPTION_SUCCESSFUL_LOGIN, TITLE_SUCCESSFUL_OPERATION, 200  ));
         successfulMessages.put(SUCCESSFUL_SECRET_PASSWORD_CODE,
                 new Message(PATH_SECRET_PASS_REGISTER, DESCRIPTION_SUCCESSFUL_SECRET_PASSWORD, TITLE_SUCCESSFUL_OPERATION, 200  ));
+        successfulMessages.put(SUCCESSFUL_DELETE_PASSWORD_CODE,
+                new Message(PATH_SECRET_PASS_DELETE, DESCRIPTION_SUCCESSFUL_DELETE_PASSWORD, TITLE_SUCCESSFUL_OPERATION, 200  ));
+        successfulMessages.put(SUCCESSFUL_SELECT_PASSWORD_CODE,
+                new Message(PATH_SECRET_PASS_SELECT, DESCRIPTION_SUCCESSFUL_SELECT_PASSWORD, TITLE_SUCCESSFUL_OPERATION, 200  ));
+        successfulMessages.put(SUCCESSFUL_UPDATE_PASSWORD_CODE,
+                new Message(PATH_SECRET_PASS_UPDATE, DESCRIPTION_SUCCESSFUL_UPDATE_PASSWORD, TITLE_SUCCESSFUL_OPERATION, 200  ));
     }
 
     public static Error getErrorMessage(String code){

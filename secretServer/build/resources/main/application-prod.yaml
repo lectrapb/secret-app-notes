@@ -12,13 +12,4 @@ spring:
 bd:
   sp:
     createUser: CALL  secret_server.SP_CREATE_USER(:id,:name,:email,:password,:image,:role,:google);
-<<<<<<< HEAD
-    createSecretPass: CALL insert_login(:in_secret_password_id,
-    :in_secret_password_name,
-    :in_secret_password_username,
-    :in_secret_password_password,
-    :in_secret_password_URI,
-    :in_user_uid_fk);
-=======
     searchUserByEmail: CALL secret_server.SP_SEARCH_USER(:email,:id);
->>>>>>> 310729ccf65990f3f3bb04b4c3b620ba37e5ded0

@@ -1,12 +1,10 @@
 package com.app.domain.usecases.secrets.secretPassUseCase;
 
 import com.app.config.BusinessException;
+import com.app.domain.model.secretPassword.*;
 import com.app.domain.model.secretPassword.gateway.SecretPasswordRepository;
-import com.app.domain.model.secretPassword.secretDeleteRequestDTO;
-import com.app.domain.model.secretPassword.secretPasswordRequestDTO;
-import com.app.domain.model.secretPassword.secretPasswordResponseDTO;
-import com.app.domain.model.secretPassword.secretUpdateRequestDTO;
 import com.app.domain.model.util.Constant;
+import com.app.domain.usecases.secrets.secretPassUseCase.mapper.MapperSecPass;
 import lombok.AllArgsConstructor;
 import reactor.core.publisher.Mono;
 
@@ -28,27 +26,6 @@ public class SecretPassUseCase {
 
     }
 
-    public Mono<secretPasswordResponseDTO> deletePassword(secretDeleteRequestDTO deleteRequestDTO){
-        System.out.println("usecase_delete" + deleteRequestDTO);
-        return Mono.fromCallable(()-> deleteRequestDTO)
-                .switchIfEmpty(Mono.error(new BusinessException(Constant.ERROR_MISSING_ARGUMENTS_CODE)))
-                .map(MapperSecPass::toDeletePass)
-                .onErrorResume(e -> Mono.error(new BusinessException(e.getMessage())))
-                .map(secretId -> secretPasswordRepository.delete(secretId.getId()))
-                .flatMap(requestDTO -> prepareOkResponse());
-
-    }
-
-    public Mono<secretPasswordResponseDTO> updatePassword(secretUpdateRequestDTO updateRequestDTO){
-        return Mono.fromCallable(()-> updateRequestDTO)
-                .switchIfEmpty(Mono.error(new BusinessException(Constant.ERROR_MISSING_ARGUMENTS_CODE)))
-                .map(MapperSecPass::toUpdatePass)
-                .onErrorResume(e -> Mono.error(new BusinessException(e.getMessage()))) //manejar exception
-                .map(secretPasswordRepository::update)
-                .flatMap(requestDTO -> prepareOkResponse());
-
-    }
-
     private Mono<secretPasswordResponseDTO> prepareOkResponse() {
 
         return Mono.fromCallable(secretPasswordResponseDTO::new)
@@ -57,4 +34,5 @@ public class SecretPassUseCase {
                     return dto;
                 });
     }
+
 }

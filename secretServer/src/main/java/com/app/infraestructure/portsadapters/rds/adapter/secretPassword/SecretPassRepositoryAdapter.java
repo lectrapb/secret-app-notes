@@ -1,4 +1,4 @@
-package com.app.infraestructure.portsadapters.rds.adapter;
+package com.app.infraestructure.portsadapters.rds.adapter.secretPassword;
 
 import com.app.config.BusinessException;
 import com.app.config.ConnectionManager;
@@ -45,46 +45,4 @@ public class SecretPassRepositoryAdapter implements SecretPasswordRepository {
         return Mono.empty();
     }
 
-    @Override
-    public Mono<Void> delete(String id) {
-
-        StringBuilder sql = new StringBuilder();
-        MapSqlParameterSource source = new MapSqlParameterSource();
-
-        sql.append(dbConfig.getDeleteSecretPass());
-        source.addValue("in_secret_password_id", id);
-
-        try{
-            jdbcTemplate.update(sql.toString(), source);
-        }catch(Exception e){
-            throw new BusinessException(Constant.ERROR_SECRET_PASS_CODE);
-        }finally {
-            ConnectionManager.closeJdbc(jdbcTemplate);
-        }
-
-        return Mono.empty();
-    }
-
-    @Override
-    public Mono<Void> update(secretPassword password) {
-        StringBuilder sql = new StringBuilder();
-        MapSqlParameterSource source = new MapSqlParameterSource();
-
-        sql.append(dbConfig.getUpdateSecretPass());
-        source.addValue("in_secret_password_id", password.getId());
-        source.addValue("in_secret_password_name", password.getName());
-        source.addValue("in_secret_password_username", password.getUsername());
-        source.addValue("in_secret_password_password", password.getPassword());
-        source.addValue("in_secret_password_URI", password.getURI());
-
-        try{
-            jdbcTemplate.update(sql.toString(), source);
-        }catch(Exception e){
-            throw new BusinessException(Constant.ERROR_SECRET_PASS_CODE);
-        }finally {
-            ConnectionManager.closeJdbc(jdbcTemplate);
-        }
-
-        return Mono.empty();
-    }
 }
