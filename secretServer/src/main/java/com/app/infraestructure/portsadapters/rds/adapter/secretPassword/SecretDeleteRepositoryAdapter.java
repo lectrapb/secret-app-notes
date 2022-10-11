@@ -20,7 +20,7 @@ public class SecretDeleteRepositoryAdapter implements SecretDeletePassRepository
     private DataBaseConfig dbConfig;
 
     @Override
-    public Mono<Void> delete(String id) {
+    public Mono<String> delete(String id) {
         StringBuilder sql = new StringBuilder();
         MapSqlParameterSource source = new MapSqlParameterSource();
 
@@ -28,13 +28,16 @@ public class SecretDeleteRepositoryAdapter implements SecretDeletePassRepository
         source.addValue("in_secret_password_id", id);
 
         try{
-            jdbcTemplate.update(sql.toString(), source);
+            int delete = jdbcTemplate.update(sql.toString(), source);
+            if(delete < 1){
+                return Mono.just(Constant.SUCCESSFUL_DELETE_ZERO_PASSWORD_CODE);
+            }
         }catch(Exception e){
             throw new BusinessException(Constant.ERROR_SECRET_PASS_CODE);
         }finally {
             ConnectionManager.closeJdbc(jdbcTemplate);
         }
 
-        return Mono.empty();
+        return Mono.just(Constant.SUCCESSFUL_DELETE_PASSWORD_CODE);
     }
 }

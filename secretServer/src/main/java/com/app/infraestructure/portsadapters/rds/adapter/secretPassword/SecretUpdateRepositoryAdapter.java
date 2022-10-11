@@ -21,7 +21,7 @@ public class SecretUpdateRepositoryAdapter implements SecretUpdatePassRepository
     private DataBaseConfig dbConfig;
 
     @Override
-    public Mono<Void> update(secretPassword password) {
+    public Mono<String> update(secretPassword password) {
         StringBuilder sql = new StringBuilder();
         MapSqlParameterSource source = new MapSqlParameterSource();
 
@@ -33,13 +33,16 @@ public class SecretUpdateRepositoryAdapter implements SecretUpdatePassRepository
         source.addValue("in_secret_password_URI", password.getURI());
 
         try{
-            jdbcTemplate.update(sql.toString(), source);
+            int update = jdbcTemplate.update(sql.toString(), source);
+            if(update < 1){
+                return Mono.just(Constant.SUCCESSFUL_UPDATE_ZERO_PASSWORD_CODE);
+            }
         }catch(Exception e){
             throw new BusinessException(Constant.ERROR_SECRET_PASS_CODE);
         }finally {
             ConnectionManager.closeJdbc(jdbcTemplate);
         }
 
-        return Mono.empty();
+        return Mono.just(Constant.SUCCESSFUL_UPDATE_PASSWORD_CODE);
     }
 }

@@ -32,6 +32,7 @@ dependencies {
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
     //
     implementation 'org.bitbucket.b_c:jose4j:0.8.0'
+    implementation 'com.enzoic:enzoic-java-client:3.0.1'
 }
 
 tasks.named('test') {

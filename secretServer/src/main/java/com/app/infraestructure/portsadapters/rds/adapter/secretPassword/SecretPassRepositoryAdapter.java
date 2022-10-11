@@ -35,7 +35,12 @@ public class SecretPassRepositoryAdapter implements SecretPasswordRepository {
         source.addValue("in_user_uid_fk", secretPassword.getUser_uid());
 
         try{
-            jdbcTemplate.update(sql.toString(), source);
+            int insert = jdbcTemplate.update(sql.toString(), source);
+            if (insert > 0){
+                System.out.println("Se realiza insert");
+            } else {
+                System.out.println("No se realiza insert");
+            }
         }catch(Exception e){
             throw new BusinessException(Constant.ERROR_SECRET_PASS_CODE);
         }finally {

@@ -20,15 +20,20 @@ public class SecretDeleteUseCase {
                 .switchIfEmpty(Mono.error(new BusinessException(Constant.ERROR_MISSING_ARGUMENTS_CODE)))
                 .map(MapperDeletePass::toDeletePass)
                 .onErrorResume(e -> Mono.error(new BusinessException(e.getMessage())))
-                .map(secretId -> deletePassRepository.delete(secretId.getId()))
-                .flatMap(requestDTO -> prepareOkResponse());
+                .flatMap(secretId -> {
+                    return deletePassRepository.delete(secretId.getId());
+                })
+                .flatMap(requestDTO -> prepareOkResponse(requestDTO));
 
     }
 
-    private Mono<secretPasswordResponseDTO> prepareOkResponse() {
-
+    private Mono<secretPasswordResponseDTO> prepareOkResponse(String id) {
         return Mono.fromCallable(secretPasswordResponseDTO::new)
                 .map(dto -> {
+                    if(id.equals(Constant.SUCCESSFUL_DELETE_ZERO_PASSWORD_CODE)){
+                        dto.setCode(Constant.SUCCESSFUL_DELETE_ZERO_PASSWORD_CODE);
+                        return dto;
+                    }
                     dto.setCode(Constant.SUCCESSFUL_DELETE_PASSWORD_CODE);
                     return dto;
                 });

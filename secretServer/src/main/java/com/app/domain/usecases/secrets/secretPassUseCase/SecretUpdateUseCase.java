@@ -20,15 +20,19 @@ public class SecretUpdateUseCase {
                 .switchIfEmpty(Mono.error(new BusinessException(Constant.ERROR_MISSING_ARGUMENTS_CODE)))
                 .map(MapperUpdatePass::toUpdatePass)
                 .onErrorResume(e -> Mono.error(new BusinessException(e.getMessage()))) //manejar exception
-                .map(updatePassRepository::update)
-                .flatMap(requestDTO -> prepareOkResponse());
+                .flatMap(updatePassRepository::update)
+                .flatMap(requestDTO -> prepareOkResponse(requestDTO));
 
     }
 
-    private Mono<secretPasswordResponseDTO> prepareOkResponse() {
+    private Mono<secretPasswordResponseDTO> prepareOkResponse(String id) {
 
         return Mono.fromCallable(secretPasswordResponseDTO::new)
                 .map(dto -> {
+                    if(id.equals(Constant.SUCCESSFUL_UPDATE_ZERO_PASSWORD_CODE)){
+                        dto.setCode(Constant.SUCCESSFUL_UPDATE_ZERO_PASSWORD_CODE);
+                        return dto;
+                    }
                     dto.setCode(Constant.SUCCESSFUL_UPDATE_PASSWORD_CODE);
                     return dto;
                 });
