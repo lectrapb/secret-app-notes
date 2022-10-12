@@ -8,6 +8,11 @@
   ],
   "properties": [
     {
+      "name": "bd.sp.create-secret-note",
+      "type": "java.lang.String",
+      "sourceType": "com.app.config.DataBaseConfig"
+    },
+    {
       "name": "bd.sp.create-secret-pass",
       "type": "java.lang.String",
       "sourceType": "com.app.config.DataBaseConfig"

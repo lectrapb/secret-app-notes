@@ -15,4 +15,5 @@ public class DataBaseConfig {
     private String updateSecretPass;
     private String searchUserByEmail;
     private String selectSecretPass;
+    private String createSecretNote;
 }
