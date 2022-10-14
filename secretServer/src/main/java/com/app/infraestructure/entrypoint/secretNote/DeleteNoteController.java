@@ -1,9 +1,10 @@
-package com.app.infraestructure.entrypoint.secretPassword;
+package com.app.infraestructure.entrypoint.secretNote;
 
 import com.app.domain.model.response.ApiResponse;
+import com.app.domain.model.secretNote.secretDeleteNoteRequestDTO;
 import com.app.domain.model.secretPassword.secretDeleteRequestDTO;
 import com.app.domain.model.util.Constant;
-import com.app.domain.usecases.secrets.secretPassUseCase.SecretDeleteUseCase;
+import com.app.domain.usecases.secrets.secretNoteUseCase.SecretDeleteNoteUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,15 +17,15 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @AllArgsConstructor
-public class DeletePassController {
+public class DeleteNoteController {
 
     @Autowired
-    private SecretDeleteUseCase deleteUseCase;
+    private SecretDeleteNoteUseCase secretDeleteNoteUseCase;
 
-    @PostMapping(Constant.PATH_SECRET_PASS_DELETE)
-    public Mono<ResponseEntity<ApiResponse>> secretDelete(@RequestBody secretDeleteRequestDTO requestDTO){
+    @PostMapping(Constant.PATH_SECRET_NOTE_DELETE)
+    public Mono<ResponseEntity<ApiResponse>> secretNoteDelete(@RequestBody secretDeleteNoteRequestDTO requestDTO){
         return Mono.fromCallable(() -> requestDTO)
-                .flatMap(deleteUseCase::deletePassword)
+                .flatMap(secretDeleteNoteUseCase::deleteNote)
                 .map(p -> ResponseEntity
                         .status(HttpStatus.CREATED)
                         .contentType(MediaType.APPLICATION_JSON)

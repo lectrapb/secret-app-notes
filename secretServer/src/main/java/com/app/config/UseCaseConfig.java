@@ -1,6 +1,7 @@
 package com.app.config;
 
 import com.app.domain.usecases.secrets.secretNoteUseCase.SecretCreateUseCase;
+import com.app.domain.usecases.secrets.secretNoteUseCase.SecretDeleteNoteUseCase;
 import com.app.domain.usecases.secrets.secretNoteUseCase.SecretFindUseCase;
 import com.app.domain.usecases.secrets.secretNoteUseCase.SecretUpdateNoteUseCase;
 import com.app.domain.usecases.secrets.secretPassUseCase.SecretDeleteUseCase;
@@ -12,6 +13,7 @@ import com.app.domain.usecases.auth.signUpUseCase.SignUpUseCase;
 import com.app.domain.usecases.secrets.secretPassUseCase.SecretSearchUseCase;
 import com.app.domain.usecases.secrets.secretPassUseCase.SecretUpdateUseCase;
 import com.app.infraestructure.portsadapters.rds.adapter.secretNote.SecretCreateRepositoryAdapter;
+import com.app.infraestructure.portsadapters.rds.adapter.secretNote.SecretDeleteNoteAdapter;
 import com.app.infraestructure.portsadapters.rds.adapter.secretNote.SecretFindRepositoryAdapter;
 import com.app.infraestructure.portsadapters.rds.adapter.secretNote.SecretUpdateNoteRepositoryAdapter;
 import com.app.infraestructure.portsadapters.rds.adapter.secretPassword.SecretDeleteRepositoryAdapter;
@@ -70,6 +72,11 @@ public class UseCaseConfig {
     @Bean
     public SecretUpdateNoteUseCase updateNoteUseCase(SecretUpdateNoteRepositoryAdapter updateNoteRepositoryAdapter){
         return new SecretUpdateNoteUseCase (updateNoteRepositoryAdapter);
+    }
+
+    @Bean
+    public SecretDeleteNoteUseCase deleteNoteUseCase(SecretDeleteNoteAdapter deleteNoteAdapter){
+        return new SecretDeleteNoteUseCase(deleteNoteAdapter);
     }
 
 }

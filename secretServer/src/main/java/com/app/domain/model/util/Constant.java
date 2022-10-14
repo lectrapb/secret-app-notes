@@ -20,6 +20,7 @@ public class Constant {
     public static final String PATH_SECRET_NOTE_REGISTER = "/api/secret-server/secret/note/register";
     public static final String PATH_SECRET_NOTE_SELECT = "/api/secret-server/secret/note/select";
     public static final String PATH_SECRET_NOTE_UPDATE = "/api/secret-server/secret/note/update";
+    public static final String PATH_SECRET_NOTE_DELETE = "/api/secret-server/secret/note/delete";
 
 
      //APPLICATION-TITLES
@@ -37,6 +38,9 @@ public class Constant {
     public static final String DESCRIPTION_SUCCESSFUL_UPDATE_ZERO_PASSWORD =" 0 Rows Affected  ";
     public static final String DESCRIPTION_SUCCESSFUL_SECRET_NOTE =" Successful register secret note  ";
     public static final String DESCRIPTION_SUCCESSFUL_UPDATE_NOTE =" Successful update secret note  ";
+    public static final String DESCRIPTION_SUCCESSFUL_DELETE_ZERO_NOTE =" 0 Rows Affected  ";
+    public static final String DESCRIPTION_SUCCESSFUL_DELETE_NOTE =" Successful delete secret note  ";
+    public static final String DESCRIPTION_SUCCESSFUL_UPDATE_ZERO_NOTE =" 0 Rows Affected  ";
      //ERROR CODES
      public static final String ERROR_MISSING_ARGUMENTS_CODE = "ER-401";
      public static final String ERROR_SIGNUP_USER_CODE = "ER-402";
@@ -55,6 +59,8 @@ public class Constant {
      public static final String SUCCESSFUL_SECRET_NOTE_CODE = "856-1";
      public static final String SUCCESSFUL_UPDATE_ZERO_NOTE_CODE = "857-1";
      public static final String SUCCESSFUL_UPDATE_NOTE_CODE = "858-1";
+     public static final String SUCCESSFUL_DELETE_ZERO_NOTE_CODE = "859-1";
+     public static final String SUCCESSFUL_DELETE_NOTE_CODE = "860-1";
      public static final String SUCCESSFUL_LOGIN_USER_CODE = "800-2";
 
      //APP-TYPES
@@ -97,6 +103,12 @@ public class Constant {
                 new Message(PATH_SECRET_NOTE_REGISTER, DESCRIPTION_SUCCESSFUL_SECRET_NOTE, TITLE_SUCCESSFUL_OPERATION, 200  ));
         successfulMessages.put(SUCCESSFUL_UPDATE_NOTE_CODE,
                 new Message(PATH_SECRET_NOTE_UPDATE, DESCRIPTION_SUCCESSFUL_UPDATE_NOTE, TITLE_SUCCESSFUL_OPERATION, 200  ));
+        successfulMessages.put(SUCCESSFUL_UPDATE_ZERO_NOTE_CODE,
+                new Message(PATH_SECRET_NOTE_UPDATE, DESCRIPTION_SUCCESSFUL_UPDATE_ZERO_NOTE, TITLE_SUCCESSFUL_OPERATION, 200  ));
+        successfulMessages.put(SUCCESSFUL_DELETE_ZERO_NOTE_CODE,
+                new Message(PATH_SECRET_NOTE_DELETE, DESCRIPTION_SUCCESSFUL_DELETE_ZERO_NOTE, TITLE_SUCCESSFUL_OPERATION, 200  ));
+        successfulMessages.put(SUCCESSFUL_DELETE_NOTE_CODE,
+                new Message(PATH_SECRET_NOTE_DELETE, DESCRIPTION_SUCCESSFUL_DELETE_NOTE, TITLE_SUCCESSFUL_OPERATION, 200  ));
     }
 
     public static Error getErrorMessage(String code){
