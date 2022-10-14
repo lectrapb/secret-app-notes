@@ -5,7 +5,6 @@ import com.app.domain.model.secretPassword.gateway.SecretUpdatePassRepository;
 import com.app.domain.model.secretPassword.secretPasswordResponseDTO;
 import com.app.domain.model.secretPassword.secretUpdateRequestDTO;
 import com.app.domain.model.util.Constant;
-import com.app.domain.usecases.secrets.secretPassUseCase.mapper.MapperSecPass;
 import com.app.domain.usecases.secrets.secretPassUseCase.mapper.MapperUpdatePass;
 import lombok.AllArgsConstructor;
 import reactor.core.publisher.Mono;

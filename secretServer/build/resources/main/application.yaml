@@ -18,3 +18,4 @@ bd:
     selectSecretPass: CALL SP_select_login_1(:in_StartIndex,:in_Count,:in_user_uid_fk );
     createSecretNote: CALL SP_insert_note(:in_secret_note_id,:in_secret_note_name,:in_secret_note_notes,:in_user_uid_fk);
     selectSecretNote: CALL SP_select_notes(:in_StartIndex,:in_Count,:in_user_uid_fk );
+    updateSecretNote: CALL SP_update_note(:in_secret_note_id,:in_secret_note_name,:in_secret_note_notes);

@@ -43,6 +43,11 @@
       "sourceType": "com.app.config.DataBaseConfig"
     },
     {
+      "name": "bd.sp.update-secret-note",
+      "type": "java.lang.String",
+      "sourceType": "com.app.config.DataBaseConfig"
+    },
+    {
       "name": "bd.sp.update-secret-pass",
       "type": "java.lang.String",
       "sourceType": "com.app.config.DataBaseConfig"

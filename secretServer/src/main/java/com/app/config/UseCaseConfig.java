@@ -2,6 +2,7 @@ package com.app.config;
 
 import com.app.domain.usecases.secrets.secretNoteUseCase.SecretCreateUseCase;
 import com.app.domain.usecases.secrets.secretNoteUseCase.SecretFindUseCase;
+import com.app.domain.usecases.secrets.secretNoteUseCase.SecretUpdateNoteUseCase;
 import com.app.domain.usecases.secrets.secretPassUseCase.SecretDeleteUseCase;
 import com.app.domain.usecases.secrets.secretPassUseCase.SecretPassUseCase;
 import com.app.domain.model.token.gateway.TokenService;
@@ -12,6 +13,7 @@ import com.app.domain.usecases.secrets.secretPassUseCase.SecretSearchUseCase;
 import com.app.domain.usecases.secrets.secretPassUseCase.SecretUpdateUseCase;
 import com.app.infraestructure.portsadapters.rds.adapter.secretNote.SecretCreateRepositoryAdapter;
 import com.app.infraestructure.portsadapters.rds.adapter.secretNote.SecretFindRepositoryAdapter;
+import com.app.infraestructure.portsadapters.rds.adapter.secretNote.SecretUpdateNoteRepositoryAdapter;
 import com.app.infraestructure.portsadapters.rds.adapter.secretPassword.SecretDeleteRepositoryAdapter;
 import com.app.infraestructure.portsadapters.rds.adapter.secretPassword.SecretPassRepositoryAdapter;
 import com.app.infraestructure.portsadapters.rds.adapter.secretPassword.SecretSearchRepositoryAdapter;
@@ -63,6 +65,11 @@ public class UseCaseConfig {
     @Bean
     public SecretFindUseCase searchNoteUseCase(SecretFindRepositoryAdapter findRepositoryAdapter){
         return new SecretFindUseCase(findRepositoryAdapter);
+    }
+
+    @Bean
+    public SecretUpdateNoteUseCase updateNoteUseCase(SecretUpdateNoteRepositoryAdapter updateNoteRepositoryAdapter){
+        return new SecretUpdateNoteUseCase (updateNoteRepositoryAdapter);
     }
 
 }
