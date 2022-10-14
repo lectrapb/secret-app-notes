@@ -33,6 +33,11 @@
       "sourceType": "com.app.config.DataBaseConfig"
     },
     {
+      "name": "bd.sp.select-secret-note",
+      "type": "java.lang.String",
+      "sourceType": "com.app.config.DataBaseConfig"
+    },
+    {
       "name": "bd.sp.select-secret-pass",
       "type": "java.lang.String",
       "sourceType": "com.app.config.DataBaseConfig"

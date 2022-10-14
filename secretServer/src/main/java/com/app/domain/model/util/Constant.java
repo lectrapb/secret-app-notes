@@ -18,6 +18,7 @@ public class Constant {
     public static final String PATH_SECRET_PASS_UPDATE = "/api/secret-server/secret/update";
     public static final String PATH_SECRET_PASS_SELECT = "/api/secret-server/secret/select";
     public static final String PATH_SECRET_NOTE_REGISTER = "/api/secret-server/secret/note/register";
+    public static final String PATH_SECRET_NOTE_SELECT = "/api/secret-server/secret/note/select";
 
 
      //APPLICATION-TITLES
@@ -55,6 +56,7 @@ public class Constant {
      //APP-TYPES
     public static final String LOGIN_AUTHORITY = "LOGIN_AUTHORITY";
     public static final String SECRET_SELECT = "SECRET_SELECT";
+    public static final String NOTE_SELECT = "NOTE_SELECT";
 
     public static final Map<String, Error> errorMessages = new HashMap<>();
     public static final Map<String, Message> successfulMessages = new HashMap<>();
