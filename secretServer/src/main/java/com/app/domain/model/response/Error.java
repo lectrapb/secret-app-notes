@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 public class Error {
 
-    private final int Status;
+    private final int status;
     private final String code;
     private final String title;
     private final String detail;

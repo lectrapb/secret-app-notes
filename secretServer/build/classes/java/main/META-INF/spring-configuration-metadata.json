@@ -8,7 +8,52 @@
   ],
   "properties": [
     {
+      "name": "bd.sp.create-secret-note",
+      "type": "java.lang.String",
+      "sourceType": "com.app.config.DataBaseConfig"
+    },
+    {
+      "name": "bd.sp.create-secret-pass",
+      "type": "java.lang.String",
+      "sourceType": "com.app.config.DataBaseConfig"
+    },
+    {
       "name": "bd.sp.create-user",
+      "type": "java.lang.String",
+      "sourceType": "com.app.config.DataBaseConfig"
+    },
+    {
+      "name": "bd.sp.delete-secret-note",
+      "type": "java.lang.String",
+      "sourceType": "com.app.config.DataBaseConfig"
+    },
+    {
+      "name": "bd.sp.delete-secret-pass",
+      "type": "java.lang.String",
+      "sourceType": "com.app.config.DataBaseConfig"
+    },
+    {
+      "name": "bd.sp.search-user-by-email",
+      "type": "java.lang.String",
+      "sourceType": "com.app.config.DataBaseConfig"
+    },
+    {
+      "name": "bd.sp.select-secret-note",
+      "type": "java.lang.String",
+      "sourceType": "com.app.config.DataBaseConfig"
+    },
+    {
+      "name": "bd.sp.select-secret-pass",
+      "type": "java.lang.String",
+      "sourceType": "com.app.config.DataBaseConfig"
+    },
+    {
+      "name": "bd.sp.update-secret-note",
+      "type": "java.lang.String",
+      "sourceType": "com.app.config.DataBaseConfig"
+    },
+    {
+      "name": "bd.sp.update-secret-pass",
       "type": "java.lang.String",
       "sourceType": "com.app.config.DataBaseConfig"
     }

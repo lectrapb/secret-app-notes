@@ -11,4 +11,9 @@ spring:
 
 bd:
   sp:
+<<<<<<< HEAD
     createUser: CALL  secret_server.SP_CREATE_USER(:id,:name,:email,:password,:image,:role,:google);
+=======
+    createUser: CALL  secret_server.SP_CREATE_USER(:id,:name,:email,:password,:image,:role,:google);
+    searchUserByEmail: CALL secret_server.SP_SEARCH_USER(:email,:id);
+>>>>>>> feature/manageSecret

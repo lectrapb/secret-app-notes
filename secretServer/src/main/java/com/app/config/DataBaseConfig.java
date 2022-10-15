@@ -10,4 +10,13 @@ import org.springframework.context.annotation.Configuration;
 public class DataBaseConfig {
 
     private String createUser;
+    private String createSecretPass;
+    private String deleteSecretPass;
+    private String updateSecretPass;
+    private String searchUserByEmail;
+    private String selectSecretPass;
+    private String createSecretNote;
+    private String selectSecretNote;
+    private String updateSecretNote;
+    private String deleteSecretNote;
 }
