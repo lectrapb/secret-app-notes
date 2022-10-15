@@ -21,6 +21,7 @@ import com.app.infraestructure.portsadapters.rds.adapter.secretPassword.SecretPa
 import com.app.infraestructure.portsadapters.rds.adapter.secretPassword.SecretSearchRepositoryAdapter;
 import com.app.infraestructure.portsadapters.rds.adapter.UserRepositoryAdapter;
 import com.app.infraestructure.portsadapters.rds.adapter.secretPassword.SecretUpdateRepositoryAdapter;
+import com.app.infraestructure.portsadapters.rds.adapter.verifyPass.VerifyPassAdapter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -35,8 +36,8 @@ public class UseCaseConfig {
     }
 
     @Bean
-    public SecretCreatePassUseCase secretPassUseCase(SecretPassRepositoryAdapter secretPasswordRepository) {
-        return new SecretCreatePassUseCase(secretPasswordRepository);
+    public SecretCreatePassUseCase secretPassUseCase(SecretPassRepositoryAdapter secretPasswordRepository, VerifyPassAdapter passAdapter) {
+        return new SecretCreatePassUseCase(secretPasswordRepository,passAdapter);
     }
     @Bean
     public LoginUseCase loginUseCase(UserSearchRepository userSearchRepository, TokenService tokenService){
