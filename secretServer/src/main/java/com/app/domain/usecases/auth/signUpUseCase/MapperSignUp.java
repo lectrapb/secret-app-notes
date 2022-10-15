@@ -13,7 +13,7 @@ public class MapperSignUp {
              User user = new User();
 
             if(requestDTO.getEmail() != null){
-                user.setUid(UUID.randomUUID().toString());
+                user.setUid(requestDTO.getUid());
                 user.setName(requestDTO.getName());
                 user.setEmail(requestDTO.getEmail());
                 user.setPassword(requestDTO.getPassword());

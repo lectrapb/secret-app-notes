@@ -32,7 +32,7 @@ public class ApiResponse {
     }
 
     public ApiResponse setMessage(String code  ){
-        this.message = Constant.getSuccesMessage(code);
+        this.message = Constant.getSuccessMessage(code);
         return this;
     }
     private ApiResponse setErrors(String codeError){

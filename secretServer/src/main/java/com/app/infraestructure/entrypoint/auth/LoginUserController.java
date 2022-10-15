@@ -1,4 +1,4 @@
-package com.app.infraestructure.entrypoint;
+package com.app.infraestructure.entrypoint.auth;
 
 
 import com.app.domain.model.response.ApiResponse;

@@ -10,9 +10,9 @@ import java.util.Map;
 
 public class Constant {
 
-    //APLICATION-PATHS
-    public static final String PATH_USER_LOGIN  = "/api/secret-server/login";
-    public static final String PATH_USER_SIGNUP = "/api/secret-server/singUp";
+    //APPLICATION-PATHS
+    public static final String PATH_USER_LOGIN  = "/api/secret-server/signIn";
+    public static final String PATH_USER_SIGNUP = "/api/secret-server/signUp";
 
 
      //APPLICATION-TITLES
@@ -60,7 +60,7 @@ public class Constant {
           return errorMessages.get(code);
     }
 
-    public static Message getSuccesMessage(String code){
+    public static Message getSuccessMessage(String code){
 
         return successfulMessages.get(code);
     }
