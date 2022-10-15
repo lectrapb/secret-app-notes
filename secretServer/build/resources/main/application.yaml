@@ -1,0 +1,25 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: api-secret-server
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/secret_app_notes?sessionVariables=sql_mode='NO_ENGINE_SUBSTITUTION'&jdbcCompliantTruncation=false
+    username: root
+    password: tupassword
+enzoic:
+  api_key: b66f28032000400ca2878d6c3af3f89a
+  api_secret: AWmQH14*p!mQy!RWF%VDZb9T&ygnscaT
+
+bd:
+  sp:
+    createUser: CALL  secret_server.SP_CREATE_USER(:id,:name,:email,:password,:image,:role,:google);
+    createSecretPass: CALL insert_login(:in_secret_password_id,:in_secret_password_name,:in_secret_password_username,:in_secret_password_password,:in_secret_password_URI,:in_user_uid_fk);
+    deleteSecretPass: CALL SP_delete_login(:in_secret_password_id);
+    updateSecretPass: CALL SP_update_login(:in_secret_password_id,:in_secret_password_name,:in_secret_password_username,:in_secret_password_password,:in_secret_password_URI);
+    selectSecretPass: CALL SP_select_login_1(:in_StartIndex,:in_Count,:in_user_uid_fk );
+    createSecretNote: CALL SP_insert_note(:in_secret_note_id,:in_secret_note_name,:in_secret_note_notes,:in_user_uid_fk);
+    selectSecretNote: CALL SP_select_notes(:in_StartIndex,:in_Count,:in_user_uid_fk );
+    updateSecretNote: CALL SP_update_note(:in_secret_note_id,:in_secret_note_name,:in_secret_note_notes);
+    deleteSecretNote: CALL SP_delete_note(:in_secret_note_id);
