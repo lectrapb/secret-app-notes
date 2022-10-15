@@ -46,6 +46,8 @@ public class Constant {
      public static final String ERROR_SIGNUP_USER_CODE = "ER-402";
      public static final String ERROR_SECRET_PASS_CODE = "ER-450";
      public static final String ERROR_SECRET_NOTE_CODE = "ER-451";
+     public static final String ERROR_EXCEED_LIMIT_CODE = "ER-452";
+     public static final String ERROR_INSECURE_PASSWORD_CODE = "ER-453";
      public static final String ERROR_LOGIN_USER_CODE  = "ER-403";
      public static final String ERROR_LOGIN_BY_TOKEN_CODE  = "ER-404";
      //SUCCESS-CODES
@@ -80,7 +82,10 @@ public class Constant {
                     new Error(HttpStatus.BAD_REQUEST.value(), ERROR_LOGIN_USER_CODE, FAILED_OPERATION_TITLE, "Fail login user" ));
         errorMessages.put(ERROR_LOGIN_BY_TOKEN_CODE,
                 new Error(HttpStatus.BAD_REQUEST.value(), ERROR_LOGIN_BY_TOKEN_CODE, FAILED_OPERATION_TITLE, "Invalid token" ));
-
+        errorMessages.put(ERROR_EXCEED_LIMIT_CODE,
+                new Error(HttpStatus.BAD_REQUEST.value(), ERROR_EXCEED_LIMIT_CODE, FAILED_OPERATION_TITLE, "Exceed Character Limit " ));
+        errorMessages.put(ERROR_INSECURE_PASSWORD_CODE,
+                new Error(HttpStatus.BAD_REQUEST.value(), ERROR_INSECURE_PASSWORD_CODE, FAILED_OPERATION_TITLE, "Password is compromised " ));
 
 
         successfulMessages.put(SUCCESSFUL_SIGNUP_USER_CODE,

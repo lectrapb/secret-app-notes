@@ -1,10 +1,12 @@
 package com.app.domain.model.secretPassword;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
+@AllArgsConstructor
 public class secretFindRequestDTO {
-    private int page;
-    private int rank;
+    private String page;
+    private String rank;
     private String user;
 }

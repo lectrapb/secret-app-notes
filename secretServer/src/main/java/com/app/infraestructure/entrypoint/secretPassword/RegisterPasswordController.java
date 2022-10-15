@@ -1,13 +1,9 @@
 package com.app.infraestructure.entrypoint.secretPassword;
 
 import com.app.domain.model.response.ApiResponse;
-import com.app.domain.model.secretPassword.secretDeleteRequestDTO;
-import com.app.domain.model.secretPassword.secretFindRequestDTO;
 import com.app.domain.model.secretPassword.secretPasswordRequestDTO;
-import com.app.domain.model.secretPassword.secretUpdateRequestDTO;
 import com.app.domain.model.util.Constant;
-import com.app.domain.usecases.secrets.secretPassUseCase.SecretPassUseCase;
-import com.app.domain.usecases.secrets.secretPassUseCase.SecretSearchUseCase;
+import com.app.domain.usecases.secrets.secretPassUseCase.SecretCreatePassUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,7 +21,7 @@ import reactor.core.publisher.Mono;
 public class RegisterPasswordController {
 
     @Autowired
-    private  SecretPassUseCase passUseCase;
+    private SecretCreatePassUseCase passUseCase;
 
     @PostMapping(Constant.PATH_SECRET_PASS_REGISTER)
     public Mono<ResponseEntity<ApiResponse>> secretRegister(@RequestBody secretPasswordRequestDTO requestDTO){

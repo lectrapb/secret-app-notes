@@ -5,7 +5,7 @@ import com.app.domain.usecases.secrets.secretNoteUseCase.SecretDeleteNoteUseCase
 import com.app.domain.usecases.secrets.secretNoteUseCase.SecretFindUseCase;
 import com.app.domain.usecases.secrets.secretNoteUseCase.SecretUpdateNoteUseCase;
 import com.app.domain.usecases.secrets.secretPassUseCase.SecretDeleteUseCase;
-import com.app.domain.usecases.secrets.secretPassUseCase.SecretPassUseCase;
+import com.app.domain.usecases.secrets.secretPassUseCase.SecretCreatePassUseCase;
 import com.app.domain.model.token.gateway.TokenService;
 import com.app.domain.model.user.gateway.UserSearchRepository;
 import com.app.domain.usecases.auth.loginUserUseCase.LoginUseCase;
@@ -35,8 +35,8 @@ public class UseCaseConfig {
     }
 
     @Bean
-    public SecretPassUseCase secretPassUseCase(SecretPassRepositoryAdapter secretPasswordRepository) {
-        return new SecretPassUseCase(secretPasswordRepository);
+    public SecretCreatePassUseCase secretPassUseCase(SecretPassRepositoryAdapter secretPasswordRepository) {
+        return new SecretCreatePassUseCase(secretPasswordRepository);
     }
     @Bean
     public LoginUseCase loginUseCase(UserSearchRepository userSearchRepository, TokenService tokenService){

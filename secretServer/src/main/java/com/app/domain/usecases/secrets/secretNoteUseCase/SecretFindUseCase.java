@@ -16,7 +16,12 @@ public class SecretFindUseCase {
     private SecretFindNoteRepository noteRepository;
 
     public Mono<List<secretFindNoteResponseDTO>> findNote(secretFindNoteRequestDTO noteRequestDTO){
-        return Mono.fromCallable(()-> noteRequestDTO)
+        return Mono.fromCallable(()-> {
+                    if(noteRequestDTO.getPage() == "" || noteRequestDTO.getRank() == "" || noteRequestDTO.getUser() == ""){
+                        throw  new BusinessException(Constant.ERROR_MISSING_ARGUMENTS_CODE);
+                    }
+                    return noteRequestDTO;
+                })
                 .switchIfEmpty(Mono.error(new BusinessException(Constant.ERROR_MISSING_ARGUMENTS_CODE)))
                 .flatMap(RequestDTO -> {
                     return noteRepository.find(RequestDTO);

@@ -8,6 +8,9 @@ spring:
     url: jdbc:mysql://localhost:3306/secret_app_notes?sessionVariables=sql_mode='NO_ENGINE_SUBSTITUTION'&jdbcCompliantTruncation=false
     username: root
     password: tupassword
+enzoic:
+  api_key: b66f28032000400ca2878d6c3af3f89a
+  api_secret: AWmQH14*p!mQy!RWF%VDZb9T&ygnscaT
 
 bd:
   sp:

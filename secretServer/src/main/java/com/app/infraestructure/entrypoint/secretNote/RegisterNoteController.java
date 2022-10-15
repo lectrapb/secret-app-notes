@@ -2,10 +2,8 @@ package com.app.infraestructure.entrypoint.secretNote;
 
 import com.app.domain.model.response.ApiResponse;
 import com.app.domain.model.secretNote.secretNoteRequestDTO;
-import com.app.domain.model.secretPassword.secretPasswordRequestDTO;
 import com.app.domain.model.util.Constant;
 import com.app.domain.usecases.secrets.secretNoteUseCase.SecretCreateUseCase;
-import com.app.domain.usecases.secrets.secretPassUseCase.SecretPassUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

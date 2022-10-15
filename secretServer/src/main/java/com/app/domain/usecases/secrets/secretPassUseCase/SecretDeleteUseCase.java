@@ -15,7 +15,6 @@ public class SecretDeleteUseCase {
     private SecretDeletePassRepository deletePassRepository;
 
     public Mono<secretPasswordResponseDTO> deletePassword(secretDeleteRequestDTO deleteRequestDTO){
-        System.out.println("usecase_delete" + deleteRequestDTO);
         return Mono.fromCallable(()-> deleteRequestDTO)
                 .switchIfEmpty(Mono.error(new BusinessException(Constant.ERROR_MISSING_ARGUMENTS_CODE)))
                 .map(MapperDeletePass::toDeletePass)

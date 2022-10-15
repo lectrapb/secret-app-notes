@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class secretFindNoteRequestDTO {
-    private int page;
-    private int rank;
+    private String page;
+    private String rank;
     private String user;
 }

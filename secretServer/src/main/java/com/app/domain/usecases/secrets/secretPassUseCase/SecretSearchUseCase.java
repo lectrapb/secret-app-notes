@@ -17,7 +17,12 @@ public class SecretSearchUseCase {
 
 
     public Mono<List<secretFindResponseDTO>> findPassword(secretFindRequestDTO findRequestDTO){
-        return Mono.fromCallable(()-> findRequestDTO)
+        return Mono.fromCallable(()->{
+                    if(findRequestDTO.getPage() == "" || findRequestDTO.getRank() == "" || findRequestDTO.getUser() == ""){
+                        throw  new BusinessException(Constant.ERROR_MISSING_ARGUMENTS_CODE);
+                    }
+                    return findRequestDTO;
+                })
                 .switchIfEmpty(Mono.error(new BusinessException(Constant.ERROR_MISSING_ARGUMENTS_CODE)))
                 .flatMap(requestDTO -> {
                     return secretSearchPass.find(requestDTO);
