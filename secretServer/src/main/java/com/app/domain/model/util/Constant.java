@@ -11,8 +11,8 @@ import java.util.Map;
 public class Constant {
 
     //APLICATION-PATHS
-    public static final String PATH_USER_LOGIN  = "/api/secret-server/login";
-    public static final String PATH_USER_SIGNUP = "/api/secret-server/singUp";
+    public static final String PATH_USER_LOGIN  = "/api/secret-server/signIn";
+    public static final String PATH_USER_SIGNUP = "/api/secret-server/signUp";
     public static final String PATH_SECRET_PASS_REGISTER = "/api/secret-server/secret/register";
     public static final String PATH_SECRET_PASS_DELETE = "/api/secret-server/secret/delete";
     public static final String PATH_SECRET_PASS_UPDATE = "/api/secret-server/secret/update";
@@ -121,7 +121,7 @@ public class Constant {
           return errorMessages.get(code);
     }
 
-    public static Message getSuccesMessage(String code){
+    public static Message getSuccessMessage(String code){
 
         return successfulMessages.get(code);
     }

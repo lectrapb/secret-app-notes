@@ -43,7 +43,6 @@ public class LoginUseCase {
                                                               tokenService.createToken(currentUser.getUid()));
                         });
 
-
     }
 
 }
