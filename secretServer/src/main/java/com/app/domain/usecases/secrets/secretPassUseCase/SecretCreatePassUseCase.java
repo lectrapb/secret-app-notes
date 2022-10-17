@@ -3,7 +3,6 @@ package com.app.domain.usecases.secrets.secretPassUseCase;
 import com.app.config.BusinessException;
 import com.app.domain.model.secretPassword.*;
 import com.app.domain.model.secretPassword.gateway.SecretPasswordRepository;
-import com.app.domain.model.secretPassword.gateway.SecretPassVerify;
 import com.app.domain.model.util.Constant;
 import com.app.domain.usecases.secrets.secretPassUseCase.mapper.MapperCreatePass;
 import lombok.AllArgsConstructor;
@@ -13,13 +12,12 @@ import reactor.core.publisher.Mono;
 public class SecretCreatePassUseCase {
 
     private SecretPasswordRepository secretPasswordRepository;
-    private final SecretPassVerify passVerify;
 
     public Mono<secretPasswordResponseDTO> registerPassword(secretPasswordRequestDTO secretPasswordRequestDTO){
         System.out.println("usecase" + secretPasswordRequestDTO);
         return Mono.fromCallable(()-> secretPasswordRequestDTO)
                 .switchIfEmpty(Mono.error(new BusinessException(Constant.ERROR_MISSING_ARGUMENTS_CODE)))
-                .map(pass -> MapperCreatePass.toSecretPass(pass,passVerify))
+                .map(MapperCreatePass::toSecretPass)
                 .onErrorResume(e -> Mono.error(new BusinessException(e.getMessage())))
                 .map(secretPasswordRepository::save)
                 .flatMap(requestDTO -> prepareOkResponse());

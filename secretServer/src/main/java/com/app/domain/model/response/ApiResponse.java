@@ -1,5 +1,6 @@
 package com.app.domain.model.response;
 
+import com.app.domain.model.secretNote.secretFindNoteRequestDTO;
 import com.app.domain.model.util.Constant;
 import lombok.NoArgsConstructor;
 
@@ -42,7 +43,5 @@ public class ApiResponse {
         this.errors = new Error[]{error};
         return this;
     }
-
-
 
 }

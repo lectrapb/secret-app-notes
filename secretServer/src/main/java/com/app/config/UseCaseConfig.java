@@ -12,6 +12,7 @@ import com.app.domain.usecases.auth.loginUserUseCase.LoginUseCase;
 import com.app.domain.usecases.auth.signUpUseCase.SignUpUseCase;
 import com.app.domain.usecases.secrets.secretPassUseCase.SecretSearchUseCase;
 import com.app.domain.usecases.secrets.secretPassUseCase.SecretUpdateUseCase;
+import com.app.domain.usecases.secrets.verifyPassUseCase.VerifyPasswordUseCase;
 import com.app.infraestructure.portsadapters.rds.adapter.secretNote.SecretCreateRepositoryAdapter;
 import com.app.infraestructure.portsadapters.rds.adapter.secretNote.SecretDeleteNoteAdapter;
 import com.app.infraestructure.portsadapters.rds.adapter.secretNote.SecretFindRepositoryAdapter;
@@ -36,8 +37,8 @@ public class UseCaseConfig {
     }
 
     @Bean
-    public SecretCreatePassUseCase secretPassUseCase(SecretPassRepositoryAdapter secretPasswordRepository, VerifyPassAdapter passAdapter) {
-        return new SecretCreatePassUseCase(secretPasswordRepository,passAdapter);
+    public SecretCreatePassUseCase secretPassUseCase(SecretPassRepositoryAdapter secretPasswordRepository) {
+        return new SecretCreatePassUseCase(secretPasswordRepository);
     }
     @Bean
     public LoginUseCase loginUseCase(UserSearchRepository userSearchRepository, TokenService tokenService){
@@ -78,6 +79,11 @@ public class UseCaseConfig {
     @Bean
     public SecretDeleteNoteUseCase deleteNoteUseCase(SecretDeleteNoteAdapter deleteNoteAdapter){
         return new SecretDeleteNoteUseCase(deleteNoteAdapter);
+    }
+
+    @Bean
+    public VerifyPasswordUseCase verifyPasswordUseCase(VerifyPassAdapter passAdapter){
+        return new VerifyPasswordUseCase(passAdapter);
     }
 
 }

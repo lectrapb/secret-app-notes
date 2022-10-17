@@ -1,14 +1,16 @@
 package com.app.infraestructure.portsadapters.rds.adapter.verifyPass;
 
-import com.app.domain.model.secretPassword.gateway.SecretPassVerify;
+import com.app.domain.model.util.Constant;
+import com.app.domain.model.verifyPass.gateway.VerifyPass;
 import com.enzoic.client.Enzoic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Mono;
 
 import java.io.IOException;
 
 @Service
-public class VerifyPassAdapter implements SecretPassVerify {
+public class VerifyPassAdapter implements VerifyPass {
     
     private final Enzoic enzoic;
 
@@ -18,14 +20,14 @@ public class VerifyPassAdapter implements SecretPassVerify {
     }
 
     @Override
-    public boolean validatePass(String password) {
+    public Mono<String> validatePass(String password) {
         try {
             if(enzoic.CheckPassword(password)){
-                return true;
+                return Mono.just(Constant.SUCCESSFUL_INSECURE_PASSWORD_CODE);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return false;
+        return Mono.just(Constant.SUCCESSFUL_VERIFY_PASSWORD_CODE);
     }
 }
