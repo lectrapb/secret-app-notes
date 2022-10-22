@@ -11,8 +11,9 @@ import java.util.Map;
 public class Constant {
 
     //APPLICATION-PATHS
-    public static final String PATH_USER_LOGIN  = "/api/secret-server/signIn";
-    public static final String PATH_USER_SIGNUP = "/api/secret-server/signUp";
+    public static final String PATH_USER_LOGIN     = "/api/secret-server/signIn";
+    public static final String PATH_USER_SIGNUP    = "/api/secret-server/signUp";
+    public static final String PATH_VALIDATE_TOKEN = "/api/secret-server/validate/token";
 
 
      //APPLICATION-TITLES
@@ -30,6 +31,8 @@ public class Constant {
      //SUCCESS-CODES
      public static final String SUCCESSFUL_SIGNUP_USER_CODE = "800-1";
      public static final String SUCCESSFUL_LOGIN_USER_CODE = "800-2";
+
+    public static final String SUCCESSFUL_LOGIN_USER_BY_TOKEN_CODE = "800-2";
 
      //APP-TYPES
     public static final String LOGIN_AUTHORITY = "LOGIN_AUTHORITY";

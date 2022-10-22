@@ -9,6 +9,7 @@ import { environment } from '../../environments/environment.prod';
 import { Response } from '../interfaces/response.interface';
 import { SignInForm } from '../interfaces/SignInForm.interface';
 import { Constant } from '../model/constant.model';
+import { User } from '../model/user.model';
 
 
 const url_base = environment.url_base;
@@ -19,6 +20,7 @@ const url_base = environment.url_base;
 export class UserService {
 
   private reponse!: Response;
+  private user: User = new User('','','');
 
   constructor(private http: HttpClient) { }
 
@@ -53,11 +55,35 @@ export class UserService {
                              map( (resp: any) =>{
                                this.reponse = resp as Response;
                                localStorage.setItem(Constant.TOKEN, this.reponse.data[0].attributes.token);    
-                               localStorage.setItem(Constant.REMEMBER_USER,this.reponse.data[0].attributes.name);
+                               localStorage.setItem(Constant.REMEMBER_USER,this.reponse.data[0].attributes.email);
                                return true;
                              }),
                              catchError(err => of(false))
                           );
   }
+
+  validateToken(token:string):Observable<boolean>{
+
+    const url = `${url_base}/validate/token`;
+    const data = {
+      token
+    };    
+    return this.http.post(url,data, this.headers)
+                    .pipe(
+                        map((resp: any) =>{
+                           this.reponse = resp as Response;
+                           const name = this.reponse.data[0].attributes.name;
+                           const email = this.reponse.data[0].attributes.email;
+                           const token = this.reponse.data[0].attributes.token;
+                           this.user = new User(name, email, '');
+                           localStorage.setItem(Constant.TOKEN, token);
+                           
+                           return true
+                        }),
+                        catchError(err => of(false))
+                    );
+  }
+
+  get currentUser(): User { return this.user; }
 
 }

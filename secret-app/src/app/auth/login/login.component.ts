@@ -3,7 +3,10 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
+import { Constant } from 'src/app/model/constant.model';
+
 import { UserService } from '../../service/user.service';
+import { User } from 'src/app/model/user.model';
 
 @Component({
   selector: 'app-login',
@@ -13,12 +16,11 @@ import { UserService } from '../../service/user.service';
 })
 export class LoginComponent implements OnInit {
 
-  private emailPattern: any = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
+ 
   public signInForm = this.fb.group({
         
-       email: ['test@gmail.com', [Validators.required, Validators.pattern(this.emailPattern)]],
-       password: ['123456',[Validators.required, Validators.minLength(6)]]
+       email: ['', [Validators.required, Validators.pattern(Constant.emailPattern)]],
+       password: ['',[Validators.required, Validators.minLength(6)]]
   });
 
   constructor(private fb:FormBuilder,
@@ -26,6 +28,26 @@ export class LoginComponent implements OnInit {
               private router:Router) { }
 
   ngOnInit(): void {
+
+       const cemail:string = localStorage.getItem(Constant.REMEMBER_USER ) || '';
+       this.signInForm.setValue({'email' :cemail, 'password': ''});
+       if(!cemail){
+        this.loadEmailFromToken();
+       }
+       
+  }
+
+  loadEmailFromToken():void{
+    const token: string = localStorage.getItem(Constant.TOKEN) || '';
+    if(token){         
+      this.userService.validateToken(token)
+          .subscribe(resp =>{
+             if(resp){
+               const user: User = this.userService.currentUser;
+               this.signInForm.setValue({'email' :user.email, 'password': ''});        
+             }
+          });            
+     }
   }
 
   signIn(): void {
@@ -44,5 +66,7 @@ export class LoginComponent implements OnInit {
 
   get email() {return this.signInForm.get('email')}; 
   get password() {return this.signInForm.get('password')}; 
+  set email(email:any) {this.signInForm.setValue({'email' :email})}; 
+
 
 }

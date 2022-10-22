@@ -22,6 +22,10 @@ public class SearchRepositoryAdapter implements UserSearchRepository {
 
     private final NamedParameterJdbcTemplate jdbcTemplate;
     private final DataBaseConfig dbConfig;
+
+    List<UserValidateDTO> list ;
+    StringBuilder sql;
+    MapSqlParameterSource sqlParam;
     @Autowired
     public SearchRepositoryAdapter(NamedParameterJdbcTemplate jdbcTemplate,
                                    DataBaseConfig dbConfig) {
@@ -32,9 +36,8 @@ public class SearchRepositoryAdapter implements UserSearchRepository {
     @Override
     public Mono<User> findByEmail(String email) {
 
-        List<UserValidateDTO> list ;
-        StringBuilder sql = new StringBuilder();
-        MapSqlParameterSource sqlParam = new MapSqlParameterSource();
+        sql = new StringBuilder();
+        sqlParam = new MapSqlParameterSource();
 
         sql.append(dbConfig.getSearchUserByEmail());
         sqlParam.addValue("email", email);
@@ -43,6 +46,31 @@ public class SearchRepositoryAdapter implements UserSearchRepository {
         try{
             list = jdbcTemplate.query(sql.toString(), sqlParam,
                         new BeanPropertyRowMapper<>(UserValidateDTO.class));
+        }catch(Exception e){
+            throw  new BusinessException(Constant.ERROR_SIGNUP_USER_CODE);
+        }finally {
+            ConnectionManager.closeJdbc(jdbcTemplate);
+        }
+
+        if(!list.isEmpty()){
+            return Mono.just(MapperSearchByMail.toModel(list.get(0)));
+        }
+        return Mono.empty();
+    }
+
+    @Override
+    public Mono<User> findById(String id) {
+
+        StringBuilder sql = new StringBuilder();
+        MapSqlParameterSource sqlParam = new MapSqlParameterSource();
+
+        sql.append(dbConfig.getSearchUserByEmail());
+        sqlParam.addValue("email", "");
+        sqlParam.addValue("id", id);
+
+        try{
+            list = jdbcTemplate.query(sql.toString(), sqlParam,
+                    new BeanPropertyRowMapper<>(UserValidateDTO.class));
         }catch(Exception e){
             throw  new BusinessException(Constant.ERROR_SIGNUP_USER_CODE);
         }finally {

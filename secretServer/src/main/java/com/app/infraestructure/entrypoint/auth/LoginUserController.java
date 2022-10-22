@@ -33,7 +33,7 @@ public class LoginUserController {
                              .body(new ApiResponse()
                                        .createOnSuccess()
                                        .setMessage(Constant.SUCCESSFUL_LOGIN_USER_CODE)
-                                       .setData(Constant.LOGIN_AUTHORITY, p, p.getName())))
+                                       .setData(Constant.LOGIN_AUTHORITY, p, p.getUid())))
                      .onErrorResume(thr -> Mono.just(thr)
                              .flatMap(e ->{
                                  ApiResponse apiResponse = new ApiResponse().createOnError(e.getMessage());

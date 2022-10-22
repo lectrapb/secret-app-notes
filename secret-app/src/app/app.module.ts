@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { PagesRoutingModule } from './pages/pages-routing.module';
 import { SharedModule } from './shared/shared.module';
+import { PagesModule } from './pages/pages.module';
 
 
 @NgModule({
@@ -20,7 +21,7 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     HttpClientModule,
     AuthModule,
-    PagesRoutingModule,
+    PagesModule,
     SharedModule
   ],
   providers: [],

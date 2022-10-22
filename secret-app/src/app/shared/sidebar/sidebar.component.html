@@ -1,1 +1,47 @@
-<p>sidebar works!</p>
+<nav class="sidebar sidebar-offcanvas">
+    <ul class="nav">
+      <li class="nav-item nav-profile">
+        <div class="nav-link">
+          
+          <div class="user-wrapper">
+            <div class="profile-image">
+              <i class="fa fa-user-circle fa-3x" aria-hidden="true"></i>
+            </div>
+            
+            <div class="text-wrapper">
+              <p class="profile-name">User</p>
+              <div>
+                <small class="designation text-muted">{{userServide.currentUser.name}}</small>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </li>
+  
+      <li class="nav-item">
+        <a class="nav-link cursor"
+           [routerLink]="['/dashboard/secret-password']">
+          <i class="menu-icon fa fa-clipboard-list"></i>
+          <span class="menu-title">Login</span>
+        </a>
+      </li>
+  
+      <li class="nav-item">
+        <a class="nav-link"
+            href="">
+          <i class="menu-icon fa fa-table"></i>
+          <span class="menu-title">Notes</span>
+        </a>
+      </li>
+  
+      <li class="nav-item">
+        <a class="nav-link cursor"
+           (click)="closeSession()">
+          <i class="menu-icon fa fa-sign-out-alt"></i>
+          <span class="menu-title">Close session</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>

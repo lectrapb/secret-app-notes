@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 
 import { UserService } from '../../service/user.service';
 import { Router } from '@angular/router';
+import { Constant } from 'src/app/model/constant.model';
 
 @Component({
   selector: 'app-register',
@@ -36,6 +37,8 @@ export class SignUpComponent implements OnInit {
                       .subscribe( resp =>{
                          if(resp){
                             Swal.fire('Succesfull', 'Get into secret App', 'success');
+                            const {email} = this.signUpForm.value;                        
+                            localStorage.setItem(Constant.REMEMBER_USER, email );
                             this.router.navigateByUrl('/login');
                          }else{
                             Swal.fire('Error', 'Error Sing-up please try again!', 'error');                          

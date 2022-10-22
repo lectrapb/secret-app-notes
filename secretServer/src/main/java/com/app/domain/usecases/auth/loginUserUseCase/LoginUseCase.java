@@ -27,7 +27,7 @@ public class LoginUseCase {
                 AtomicReference<String> password = new AtomicReference<>("");
                 return  Mono.fromCallable(() ->
                         new UserLogin(new EmailUser(requestDTO.getEmail()),
-                        new PasswordUser(requestDTO.getPassword())))
+                                       new PasswordUser(requestDTO.getPassword())))
                         .onErrorResume(err -> Mono.error(new BusinessException(err.getMessage())))
                         .flatMap(userLogin -> {
                             password.set(userLogin.getPassword().value());

@@ -13,7 +13,6 @@ import org.jose4j.jwt.consumer.InvalidJwtException;
 import org.jose4j.jwt.consumer.JwtConsumer;
 import org.jose4j.jwt.consumer.JwtConsumerBuilder;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Mono;
 
 
 @Service
@@ -24,7 +23,7 @@ public class TokenServiceImpl implements TokenService {
     private static  final String USER = "service-name";
 
     @Override
-    public String createToken(String uuid) {
+    public String createToken(String uid) {
         try{
             // Create the Claims, which will be the content of the JWT
             JwtClaims claims = new JwtClaims();
@@ -35,7 +34,7 @@ public class TokenServiceImpl implements TokenService {
             claims.setIssuedAtToNow();  // when the token was issued/created (now)
             claims.setNotBeforeMinutesInThePast(1); // time before which the token is not yet valid (2 minutes ago)
             claims.setSubject("subject"); // the subject/principal is whom the token is about
-            claims.setClaim("uuid", uuid); // additional claims/attributes about the subject can be added
+            claims.setClaim("uid", uid); // additional claims/attributes about the subject can be added
 
             JsonWebSignature jws = new JsonWebSignature();
 

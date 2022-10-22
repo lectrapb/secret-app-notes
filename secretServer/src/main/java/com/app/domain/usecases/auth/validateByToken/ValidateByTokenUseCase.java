@@ -4,16 +4,17 @@ import com.app.config.BusinessException;
 import com.app.domain.model.token.Token;
 import com.app.domain.model.token.gateway.TokenService;
 import com.app.domain.model.user.UserLoginResponseDTO;
-import com.app.domain.model.user.gateway.UserSearchByIdRepository;
+import com.app.domain.model.user.gateway.UserSearchRepository;
 import com.app.domain.model.util.Constant;
 import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import reactor.core.publisher.Mono;
 
 @AllArgsConstructor
 public class ValidateByTokenUseCase {
 
 
-    private final UserSearchByIdRepository searchRepository;
+    private final UserSearchRepository searchRepository;
     private final TokenService tokenService;
 
     public Mono<UserLoginResponseDTO> validate(String token){
