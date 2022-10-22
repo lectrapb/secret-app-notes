@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.app.domain.usecases.auth.loginUserUseCase.LoginUseCaseTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-10-15T17:37:13" hostname="Home" time="1.954">
-  <properties/>
-  <testcase name="user_login_ok_test()" classname="com.app.domain.usecases.auth.loginUserUseCase.LoginUseCaseTest" time="1.936"/>
-  <testcase name="user_login_null_test()" classname="com.app.domain.usecases.auth.loginUserUseCase.LoginUseCaseTest" time="0.015"/>
-  <system-out><![CDATA[12:37:15.338 [Test worker] DEBUG reactor.util.Loggers - Using Slf4j logging framework
-]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

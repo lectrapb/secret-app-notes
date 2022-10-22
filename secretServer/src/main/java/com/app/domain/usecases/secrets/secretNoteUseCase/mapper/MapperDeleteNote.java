@@ -9,7 +9,7 @@ public class MapperDeleteNote {
 
     public static secretNote toDeletePass(secretDeleteNoteRequestDTO requestDTO){
         secretNote deleteNote = new secretNote();
-        if(requestDTO.getId() == ""){
+        if(requestDTO.getId() == "" || requestDTO.getId() == null){
             throw  new BusinessException(Constant.ERROR_MISSING_ARGUMENTS_CODE);
         }
         deleteNote.setId(requestDTO.getId());

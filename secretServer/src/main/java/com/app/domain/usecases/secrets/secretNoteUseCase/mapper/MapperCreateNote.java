@@ -13,7 +13,7 @@ public class MapperCreateNote {
 
     public static secretNote toSecretNote(secretNoteRequestDTO requestDTO){
         secretNote note = new secretNote();
-        if(requestDTO.getName() == ""){
+        if(requestDTO.getName() == "" || requestDTO.getName() == null){
             throw  new BusinessException(Constant.ERROR_MISSING_ARGUMENTS_CODE);
         } else if(requestDTO.getNotes().length() > 255){
             throw  new BusinessException(Constant.ERROR_EXCEED_LIMIT_CODE);

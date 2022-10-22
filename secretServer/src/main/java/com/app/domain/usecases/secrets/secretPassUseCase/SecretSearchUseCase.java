@@ -18,7 +18,10 @@ public class SecretSearchUseCase {
 
     public Mono<List<secretFindResponseDTO>> findPassword(secretFindRequestDTO findRequestDTO){
         return Mono.fromCallable(()->{
-                    if(findRequestDTO.getPage() == "" || findRequestDTO.getRank() == "" || findRequestDTO.getUser() == ""){
+                    if(findRequestDTO.getPage() == "" || findRequestDTO.getRank() == "" ||
+                            findRequestDTO.getUser() == ""
+                    || findRequestDTO.getPage() == null || findRequestDTO.getRank() == null ||
+                            findRequestDTO.getUser() == null){
                         throw  new BusinessException(Constant.ERROR_MISSING_ARGUMENTS_CODE);
                     }
                     return findRequestDTO;

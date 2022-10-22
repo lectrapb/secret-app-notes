@@ -18,7 +18,7 @@ public class SecretUpdateUseCase {
         return Mono.fromCallable(()-> updateRequestDTO)
                 .switchIfEmpty(Mono.error(new BusinessException(Constant.ERROR_MISSING_ARGUMENTS_CODE)))
                 .map(MapperUpdatePass::toUpdatePass)
-                .onErrorResume(e -> Mono.error(new BusinessException(e.getMessage()))) //manejar exception
+                .onErrorResume(e -> Mono.error(new BusinessException(e.getMessage())))
                 .flatMap(updatePassRepository::update)
                 .flatMap(requestDTO -> prepareOkResponse(requestDTO));
 
