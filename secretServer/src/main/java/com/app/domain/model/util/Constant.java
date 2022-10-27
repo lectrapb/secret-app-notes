@@ -28,17 +28,22 @@ public class Constant {
      public static final String ERROR_SIGNUP_USER_CODE = "ER-402";
      public static final String ERROR_LOGIN_USER_CODE  = "ER-403";
      public static final String ERROR_LOGIN_BY_TOKEN_CODE  = "ER-404";
-     //SUCCESS-CODES
-     public static final String SUCCESSFUL_SIGNUP_USER_CODE = "800-1";
-     public static final String SUCCESSFUL_LOGIN_USER_CODE = "800-2";
 
-    public static final String SUCCESSFUL_LOGIN_USER_BY_TOKEN_CODE = "800-2";
+    public static final String ERROR_REMOVE_USER = "ER-405";
+
+     //SUCCESS-CODES
+     public static final String SUCCESSFUL_SIGNUP_USER_CODE = "200-1";
+     public static final String SUCCESSFUL_LOGIN_USER_CODE = "200-2";
+     public static final String SUCCESSFUL_LOGIN_USER_BY_TOKEN_CODE = "200-3";
+     public static final String SUCCESSFUL_DELETE_USER_CODE = "200-4";
 
      //APP-TYPES
     public static final String LOGIN_AUTHORITY = "LOGIN_AUTHORITY";
 
     public static final Map<String, Error> errorMessages = new HashMap<>();
     public static final Map<String, Message> successfulMessages = new HashMap<>();
+
+
 
     static {
         errorMessages.put(ERROR_MISSING_ARGUMENTS_CODE,
@@ -49,6 +54,8 @@ public class Constant {
                     new Error(HttpStatus.BAD_REQUEST.value(), ERROR_LOGIN_USER_CODE, FAILED_OPERATION_TITLE, "Fail login user" ));
         errorMessages.put(ERROR_LOGIN_BY_TOKEN_CODE,
                 new Error(HttpStatus.BAD_REQUEST.value(), ERROR_LOGIN_BY_TOKEN_CODE, FAILED_OPERATION_TITLE, "Invalid token" ));
+       errorMessages.put(ERROR_REMOVE_USER,
+                    new Error(HttpStatus.BAD_REQUEST.value(), ERROR_REMOVE_USER, FAILED_OPERATION_TITLE, "Invalid user" ));
 
 
 

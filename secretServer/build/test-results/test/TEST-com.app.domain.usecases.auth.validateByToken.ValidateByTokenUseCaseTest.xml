@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.app.domain.usecases.auth.validateByToken.ValidateByTokenUseCaseTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-10-21T22:31:54" hostname="ingeniero-lubuntu20" time="0.783">
-  <properties/>
-  <testcase name="validate_by_token_ok_test()" classname="com.app.domain.usecases.auth.validateByToken.ValidateByTokenUseCaseTest" time="0.783"/>
-  <system-out><![CDATA[17:31:54.803 [Test worker] DEBUG reactor.util.Loggers - Using Slf4j logging framework
-]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
