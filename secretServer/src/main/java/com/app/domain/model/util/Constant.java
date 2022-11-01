@@ -21,6 +21,7 @@ public class Constant {
     public static final String PATH_SECRET_NOTE_SELECT = "/api/secret-server/secret/note/select";
     public static final String PATH_SECRET_NOTE_UPDATE = "/api/secret-server/secret/note/update";
     public static final String PATH_SECRET_NOTE_DELETE = "/api/secret-server/secret/note/delete";
+    public static final String PATH_DELETE_ALL_SECRET = "/api/secret-server/secret/all/delete";
     public static final String PATH_VERIFY_PASS = "/api/secret-server/verify/password";
 
 

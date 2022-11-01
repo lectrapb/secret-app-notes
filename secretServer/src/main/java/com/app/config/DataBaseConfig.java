@@ -19,4 +19,5 @@ public class DataBaseConfig {
     private String selectSecretNote;
     private String updateSecretNote;
     private String deleteSecretNote;
+    private String deleteSecretAll;
 }

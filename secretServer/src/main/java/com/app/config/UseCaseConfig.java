@@ -1,5 +1,6 @@
 package com.app.config;
 
+import com.app.domain.usecases.secrets.secretDeleteAllUseCase.SecretDeleteAllUseCase;
 import com.app.domain.usecases.secrets.secretNoteUseCase.SecretCreateUseCase;
 import com.app.domain.usecases.secrets.secretNoteUseCase.SecretDeleteNoteUseCase;
 import com.app.domain.usecases.secrets.secretNoteUseCase.SecretFindUseCase;
@@ -13,6 +14,7 @@ import com.app.domain.usecases.auth.signUpUseCase.SignUpUseCase;
 import com.app.domain.usecases.secrets.secretPassUseCase.SecretSearchUseCase;
 import com.app.domain.usecases.secrets.secretPassUseCase.SecretUpdateUseCase;
 import com.app.domain.usecases.secrets.verifyPassUseCase.VerifyPasswordUseCase;
+import com.app.infraestructure.portsadapters.rds.adapter.secretAll.SecretDeleteAllRepositoryAdapter;
 import com.app.infraestructure.portsadapters.rds.adapter.secretNote.SecretCreateRepositoryAdapter;
 import com.app.infraestructure.portsadapters.rds.adapter.secretNote.SecretDeleteNoteAdapter;
 import com.app.infraestructure.portsadapters.rds.adapter.secretNote.SecretFindRepositoryAdapter;
@@ -84,6 +86,11 @@ public class UseCaseConfig {
     @Bean
     public VerifyPasswordUseCase verifyPasswordUseCase(VerifyPassAdapter passAdapter){
         return new VerifyPasswordUseCase(passAdapter);
+    }
+
+    @Bean
+    public SecretDeleteAllUseCase deleteAllUseCase(SecretDeleteAllRepositoryAdapter deleteAllAdapter){
+        return new SecretDeleteAllUseCase(deleteAllAdapter);
     }
 
 }
