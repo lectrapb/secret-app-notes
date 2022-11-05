@@ -4,25 +4,25 @@ import com.app.domain.model.token.gateway.EncryptService;
 import org.jose4j.jwe.ContentEncryptionAlgorithmIdentifiers;
 import org.jose4j.jwe.JsonWebEncryption;
 import org.jose4j.jwe.KeyManagementAlgorithmIdentifiers;
-import org.jose4j.keys.AesKey;
-import org.jose4j.lang.ByteUtil;
+import org.jose4j.jwk.JsonWebKey;
 import org.jose4j.lang.JoseException;
 import org.springframework.stereotype.Service;
-
-import java.security.Key;
 @Service
 public class EncryptServiceImpl implements EncryptService {
-    Key key = new AesKey(ByteUtil.randomBytes(16));
+    JsonWebKey jwk = JsonWebKey.Factory.newJwk(SimetricKey.jwkJson);
+
+    public EncryptServiceImpl() throws JoseException {
+    }
 
     @Override
     public String encrypt(String clave) throws JoseException {
-        JsonWebEncryption jwe = new JsonWebEncryption();
-        jwe.setPayload(clave);
-        jwe.setAlgorithmHeaderValue(KeyManagementAlgorithmIdentifiers.A128KW);
-        jwe.setEncryptionMethodHeaderParameter(ContentEncryptionAlgorithmIdentifiers.AES_128_CBC_HMAC_SHA_256);
-        jwe.setKey(key);
-        String serializedJwe = jwe.getCompactSerialization();
-        System.out.println("Serialized Encrypted JWE: " + serializedJwe);
-        return serializedJwe;
+        JsonWebEncryption senderJwe = new JsonWebEncryption();
+        senderJwe.setPlaintext(clave);
+        senderJwe.setAlgorithmHeaderValue(KeyManagementAlgorithmIdentifiers.DIRECT);
+        senderJwe.setEncryptionMethodHeaderParameter(ContentEncryptionAlgorithmIdentifiers.AES_128_CBC_HMAC_SHA_256);
+        senderJwe.setKey(jwk.getKey());
+        String compactSerialization = senderJwe.getCompactSerialization();
+        return compactSerialization;
     }
+
 }
