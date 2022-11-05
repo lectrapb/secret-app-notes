@@ -15,7 +15,7 @@ public class MapperCreateNote {
         secretNote note = new secretNote();
         if(requestDTO.getName() == "" || requestDTO.getName() == null){
             throw  new BusinessException(Constant.ERROR_MISSING_ARGUMENTS_CODE);
-        } else if(requestDTO.getNotes().length() > 255){
+        } else if(requestDTO.getNotes().length() > 800){
             throw  new BusinessException(Constant.ERROR_EXCEED_LIMIT_CODE);
         }
         note.setId(UUID.randomUUID().toString());

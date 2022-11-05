@@ -1,5 +1,6 @@
 package com.app.config;
 
+import com.app.domain.model.token.gateway.EncryptService;
 import com.app.domain.usecases.secrets.secretDeleteAllUseCase.SecretDeleteAllUseCase;
 import com.app.domain.usecases.secrets.secretNoteUseCase.SecretCreateUseCase;
 import com.app.domain.usecases.secrets.secretNoteUseCase.SecretDeleteNoteUseCase;
@@ -39,8 +40,8 @@ public class UseCaseConfig {
     }
 
     @Bean
-    public SecretCreatePassUseCase secretPassUseCase(SecretPassRepositoryAdapter secretPasswordRepository) {
-        return new SecretCreatePassUseCase(secretPasswordRepository);
+    public SecretCreatePassUseCase secretPassUseCase(SecretPassRepositoryAdapter secretPasswordRepository, EncryptService encryptService) {
+        return new SecretCreatePassUseCase(secretPasswordRepository, encryptService);
     }
     @Bean
     public LoginUseCase loginUseCase(UserSearchRepository userSearchRepository, TokenService tokenService){
@@ -59,13 +60,13 @@ public class UseCaseConfig {
     }
 
     @Bean
-    public SecretUpdateUseCase updateUseCase(SecretUpdateRepositoryAdapter updateRepositoryAdapter){
-        return new SecretUpdateUseCase(updateRepositoryAdapter);
+    public SecretUpdateUseCase updateUseCase(SecretUpdateRepositoryAdapter updateRepositoryAdapter, EncryptService encryptService){
+        return new SecretUpdateUseCase(updateRepositoryAdapter, encryptService);
     }
 
     @Bean
-    public SecretCreateUseCase createUseCase(SecretCreateRepositoryAdapter createRepositoryAdapter){
-        return new SecretCreateUseCase(createRepositoryAdapter);
+    public SecretCreateUseCase createUseCase(SecretCreateRepositoryAdapter createRepositoryAdapter, EncryptService encryptService){
+        return new SecretCreateUseCase(createRepositoryAdapter, encryptService);
     }
 
     @Bean
@@ -74,8 +75,8 @@ public class UseCaseConfig {
     }
 
     @Bean
-    public SecretUpdateNoteUseCase updateNoteUseCase(SecretUpdateNoteRepositoryAdapter updateNoteRepositoryAdapter){
-        return new SecretUpdateNoteUseCase (updateNoteRepositoryAdapter);
+    public SecretUpdateNoteUseCase updateNoteUseCase(SecretUpdateNoteRepositoryAdapter updateNoteRepositoryAdapter, EncryptService encryptService){
+        return new SecretUpdateNoteUseCase (updateNoteRepositoryAdapter, encryptService);
     }
 
     @Bean

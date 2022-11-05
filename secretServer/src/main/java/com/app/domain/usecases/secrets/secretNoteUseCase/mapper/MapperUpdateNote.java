@@ -12,7 +12,7 @@ public class MapperUpdateNote {
         if(requestDTO.getId() == "" || requestDTO.getName() == "" ||
                 requestDTO.getId() == null || requestDTO.getName() == null){
             throw  new BusinessException(Constant.ERROR_MISSING_ARGUMENTS_CODE);
-        } else if(requestDTO.getNotes().length() > 255){
+        } else if(requestDTO.getNotes().length() > 800){
             throw  new BusinessException(Constant.ERROR_EXCEED_LIMIT_CODE);
         }
         updateNote.setId(requestDTO.getId());

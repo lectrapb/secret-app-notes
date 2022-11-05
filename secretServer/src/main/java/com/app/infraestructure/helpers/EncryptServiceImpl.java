@@ -7,9 +7,10 @@ import org.jose4j.jwe.KeyManagementAlgorithmIdentifiers;
 import org.jose4j.keys.AesKey;
 import org.jose4j.lang.ByteUtil;
 import org.jose4j.lang.JoseException;
+import org.springframework.stereotype.Service;
 
 import java.security.Key;
-
+@Service
 public class EncryptServiceImpl implements EncryptService {
     Key key = new AesKey(ByteUtil.randomBytes(16));
 
@@ -22,6 +23,6 @@ public class EncryptServiceImpl implements EncryptService {
         jwe.setKey(key);
         String serializedJwe = jwe.getCompactSerialization();
         System.out.println("Serialized Encrypted JWE: " + serializedJwe);
-        return null;
+        return serializedJwe;
     }
 }

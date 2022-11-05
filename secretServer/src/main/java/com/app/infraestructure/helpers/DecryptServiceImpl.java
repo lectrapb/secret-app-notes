@@ -8,9 +8,11 @@ import org.jose4j.jwe.KeyManagementAlgorithmIdentifiers;
 import org.jose4j.keys.AesKey;
 import org.jose4j.lang.ByteUtil;
 import org.jose4j.lang.JoseException;
+import org.springframework.stereotype.Service;
 
 import java.security.Key;
 
+@Service
 public class DecryptServiceImpl implements DecryptService {
     Key key = new AesKey(ByteUtil.randomBytes(16));
     @Override
@@ -22,7 +24,7 @@ public class DecryptServiceImpl implements DecryptService {
                 ContentEncryptionAlgorithmIdentifiers.AES_128_CBC_HMAC_SHA_256));
         jwe.setKey(key);
         jwe.setCompactSerialization(clave);
-        System.out.println("Payload: " + jwe.getPayload());
-        return null;
+        String payload = jwe.getPayload();
+        return payload;
     }
 }
