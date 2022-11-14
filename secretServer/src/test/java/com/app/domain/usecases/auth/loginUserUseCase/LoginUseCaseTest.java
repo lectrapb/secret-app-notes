@@ -1,6 +1,7 @@
 package com.app.domain.usecases.auth.loginUserUseCase;
 
 import com.app.config.BusinessException;
+import com.app.domain.model.password.PasswordEncryptService;
 import com.app.domain.model.token.gateway.TokenService;
 import com.app.domain.model.user.gateway.UserSearchRepository;
 import com.app.domain.model.util.Constant;
@@ -23,13 +24,14 @@ class LoginUseCaseTest {
 
     private TokenService tokenService;
 
-
+    private PasswordEncryptService encryptService;
 
     @BeforeEach
     void setUp() {
          searchRepository = mock(UserSearchRepository.class);
          tokenService = mock(TokenService.class);
-         useCase = new LoginUseCase(searchRepository, tokenService);
+         encryptService = mock (PasswordEncryptService.class);
+         useCase = new LoginUseCase(searchRepository, tokenService, encryptService);
     }
 
     @Test
@@ -47,6 +49,8 @@ class LoginUseCaseTest {
 
         when(searchRepository.findByEmail(any())).thenReturn(UserMother.dataOk());
         when(tokenService.createToken(any())).thenReturn("Token-test");
+        when(encryptService.checkPassword(any(), any())).thenReturn(true);
+
         var response = useCase.login(LoginReqMother.dataOk());
         StepVerifier.create(response)
                 .consumeNextWith(Assertions::assertNotNull)

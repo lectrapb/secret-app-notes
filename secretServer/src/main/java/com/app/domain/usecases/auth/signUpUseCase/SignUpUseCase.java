@@ -1,6 +1,7 @@
 package com.app.domain.usecases.auth.signUpUseCase;
 
 import com.app.config.BusinessException;
+import com.app.domain.model.password.PasswordEncryptService;
 import com.app.domain.model.user.UserSignUpResponseDTO;
 import com.app.domain.model.user.UserSignUpResquestDTO;
 import com.app.domain.model.user.gateway.UserSignUpRepository;
@@ -13,12 +14,18 @@ public class SignUpUseCase {
 
     private final UserSignUpRepository userRepository;
 
+    private final PasswordEncryptService encryptService;
+
     public Mono<UserSignUpResponseDTO> registerUser(UserSignUpResquestDTO requestDTO){
 
           return Mono.fromCallable(() -> requestDTO)
                   .switchIfEmpty(Mono.error(new BusinessException(Constant.ERROR_MISSING_ARGUMENTS_CODE)))
                   .map(MapperSignUp::toUser)
                   .onErrorResume(e -> Mono.error(new BusinessException(e.getMessage())))
+                  .map(user -> {
+                        user.setPassword(encryptService.encryptPassword(user.getPassword()));
+                        return  user;
+                   })
                   .map(userRepository::save)
                   .flatMap(dto ->prepareOkResponse());
     }

@@ -1,6 +1,7 @@
 package com.app.domain.usecases.auth.signUpUseCase;
 
 import com.app.config.BusinessException;
+import com.app.domain.model.password.PasswordEncryptService;
 import com.app.domain.model.user.User;
 import com.app.domain.model.user.UserSignUpResquestDTO;
 import com.app.domain.model.user.gateway.UserSignUpRepository;
@@ -17,12 +18,15 @@ class SignUpUserUseCaseTest {
 
     private UserSignUpRepository userRepository;
 
+    private PasswordEncryptService encryptService;
+
     private SignUpUseCase useCase;
 
     @BeforeEach
     void setUp() {
         userRepository = mock(UserSignUpRepository.class);
-        useCase = new SignUpUseCase(userRepository);
+        encryptService = mock(PasswordEncryptService.class);
+        useCase = new SignUpUseCase(userRepository, encryptService);
     }
 
     @Test
@@ -48,6 +52,8 @@ class SignUpUserUseCaseTest {
     void user_signup_ok_test() {
 
         when(userRepository.save(isA(User.class))).thenReturn(Mono.empty());
+        when(encryptService.encryptPassword(any())).thenReturn("");
+
         var response = useCase.registerUser(getResquestDTO());
         StepVerifier.create(response)
                 .consumeNextWith(Assertions::assertNotNull)

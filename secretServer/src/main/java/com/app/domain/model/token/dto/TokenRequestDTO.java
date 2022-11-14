@@ -1,4 +1,4 @@
-package com.app.infraestructure.entrypoint.auth;
+package com.app.domain.model.token.dto;
 
 
 import com.app.domain.model.util.ValueObject;

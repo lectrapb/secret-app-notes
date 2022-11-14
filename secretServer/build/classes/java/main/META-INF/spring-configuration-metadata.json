@@ -13,6 +13,11 @@
       "sourceType": "com.app.config.DataBaseConfig"
     },
     {
+      "name": "bd.sp.delete-user-by-id",
+      "type": "java.lang.String",
+      "sourceType": "com.app.config.DataBaseConfig"
+    },
+    {
       "name": "bd.sp.search-user-by-email",
       "type": "java.lang.String",
       "sourceType": "com.app.config.DataBaseConfig"

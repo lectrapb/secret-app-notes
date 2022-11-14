@@ -11,4 +11,5 @@ public class DataBaseConfig {
 
     private String createUser;
     private String searchUserByEmail;
+    private String deleteUserById;
 }

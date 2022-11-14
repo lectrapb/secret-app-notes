@@ -10,7 +10,7 @@ public class UserMother {
     public static Mono<User> dataOk(){
 
      return Mono.just(new User()).map(user -> {
-            user.setUid(UUID.randomUUID().toString());
+            user.setUid(ConstanTest.UID);
             user.setPassword(ConstanTest.PASSWORD_LOGIN);
             user.setEmail(ConstanTest.EMAIL_LOGIN);
             return user;

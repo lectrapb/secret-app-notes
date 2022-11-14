@@ -27,6 +27,7 @@ public class ValidateByTokenUseCase {
                          UserLoginResponseDTO responseDTO = new UserLoginResponseDTO();
                          return searchRepository.findById(validateToken.getUid())
                                  .map(user -> {
+                                     responseDTO.setUid(user.getUid());
                                      responseDTO.setEmail(user.getEmail());
                                      responseDTO.setName(user.getName());
                                      responseDTO.setToken(tokenService.createToken(user.getUid()));

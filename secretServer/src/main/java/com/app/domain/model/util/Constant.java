@@ -15,6 +15,7 @@ public class Constant {
     public static final String PATH_USER_SIGNUP    = "/api/secret-server/signUp";
     public static final String PATH_VALIDATE_TOKEN = "/api/secret-server/validate/token";
 
+    public static final String PATH_REMOVE_USER = "/api/secret-server/remove/user";
 
      //APPLICATION-TITLES
      public static final String TITLE_SUCCESSFUL_OPERATION =  "SUCCESS OPERATION";
@@ -23,6 +24,7 @@ public class Constant {
      //APPLICATION-DESCRIPTIONS
     public static final String DESCRIPTION_SUCCESSFUL_SIGN_UP =" Successful user signup  ";
     public static final String DESCRIPTION_SUCCESSFUL_LOGIN =" Successful user login  ";
+    public static final String DESCRIPTION_SUCCESSFUL_DELETE =" Successful delete user  ";
      //ERROR CODES
      public static final String ERROR_MISSING_ARGUMENTS_CODE = "ER-401";
      public static final String ERROR_SIGNUP_USER_CODE = "ER-402";
@@ -63,6 +65,8 @@ public class Constant {
                new Message(PATH_USER_SIGNUP, DESCRIPTION_SUCCESSFUL_SIGN_UP, TITLE_SUCCESSFUL_OPERATION, 200  ));
         successfulMessages.put(SUCCESSFUL_LOGIN_USER_CODE,
                 new Message(PATH_USER_LOGIN, DESCRIPTION_SUCCESSFUL_LOGIN, TITLE_SUCCESSFUL_OPERATION, 200  ));
+        successfulMessages.put(SUCCESSFUL_DELETE_USER_CODE,
+                new Message(PATH_REMOVE_USER, DESCRIPTION_SUCCESSFUL_DELETE, TITLE_SUCCESSFUL_OPERATION, 200  ));
     }
 
     public static Error getErrorMessage(String code){

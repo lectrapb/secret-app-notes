@@ -10,7 +10,15 @@ public class TokenMother {
 
         Token token = new Token();
         token.setValid(true);
-        token.setUid(UUID.randomUUID().toString().replace("-",""));
+        token.setUid(ConstanTest.UID);
+        return token;
+    }
+
+    public static Token uidBad(){
+
+        Token token = new Token();
+        token.setValid(true);
+        token.setUid(UUID.randomUUID().toString());
         return token;
     }
 }

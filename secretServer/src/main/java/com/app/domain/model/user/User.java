@@ -1,6 +1,7 @@
 package com.app.domain.model.user;
 
 
+import lombok.Builder;
 import lombok.Data;
 
 @Data
@@ -13,5 +14,6 @@ public class User {
     private String image;
     private String role;
     private boolean google;
+
 
 }

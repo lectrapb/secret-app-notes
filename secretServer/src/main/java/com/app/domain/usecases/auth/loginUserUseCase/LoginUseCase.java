@@ -2,6 +2,7 @@ package com.app.domain.usecases.auth.loginUserUseCase;
 
 
 import com.app.config.BusinessException;
+import com.app.domain.model.password.PasswordEncryptService;
 import com.app.domain.model.token.gateway.TokenService;
 import com.app.domain.model.user.UserLogin;
 import com.app.domain.model.user.UserLoginRequestDTO;
@@ -22,6 +23,8 @@ public class LoginUseCase {
     private final UserSearchRepository searchRepository;
     private final TokenService tokenService;
 
+    private final PasswordEncryptService encryptService;
+
     public Mono<UserLoginResponseDTO> login(UserLoginRequestDTO requestDTO){
 
                 AtomicReference<String> password = new AtomicReference<>("");
@@ -36,10 +39,13 @@ public class LoginUseCase {
                         .switchIfEmpty(Mono.error(new BusinessException(Constant.ERROR_LOGIN_USER_CODE)))
                         .map(currentUser ->{
                               String evaluatePassword = password.get();
-                              if(!currentUser.getPassword().equals(evaluatePassword)){
+                              boolean match = encryptService.checkPassword(evaluatePassword, currentUser.getPassword());
+                              if(!match){
                                   throw new BusinessException(Constant.ERROR_LOGIN_USER_CODE);
                               }
-                            return  new UserLoginResponseDTO(currentUser.getName(), currentUser.getEmail(),
+                            return  new UserLoginResponseDTO( currentUser.getUid(),
+                                                              currentUser.getName(),
+                                                              currentUser.getEmail(),
                                                               tokenService.createToken(currentUser.getUid()));
                         });
 

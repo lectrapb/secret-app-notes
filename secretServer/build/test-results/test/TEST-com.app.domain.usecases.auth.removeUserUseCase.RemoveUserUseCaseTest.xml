@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.app.domain.usecases.auth.removeUserUseCase.RemoveUserUseCaseTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-10-27T02:00:16" hostname="ingeniero-lubuntu20" time="0.405">
-  <properties/>
-  <testcase name="remove_user_use_case_bad_uid_test()" classname="com.app.domain.usecases.auth.removeUserUseCase.RemoveUserUseCaseTest" time="0.405"/>
-  <system-out><![CDATA[21:00:16.592 [Test worker] DEBUG reactor.util.Loggers - Using Slf4j logging framework
-]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

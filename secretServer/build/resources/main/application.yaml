@@ -13,3 +13,4 @@ bd:
   sp:
     createUser: CALL  secret_server.SP_CREATE_USER(:id,:name,:email,:password,:image,:role,:google);
     searchUserByEmail: CALL secret_server.SP_SEARCH_USER(:email,:id);
+    deleteUserById: CALL secret_server.SP_DELETE_USER(:id);

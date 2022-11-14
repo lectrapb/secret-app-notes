@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.app.domain.usecases.auth.loginUserUseCase.LoginUseCaseTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-11-14T15:44:23" hostname="ingeniero-lubuntu20" time="0.467">
+  <properties/>
+  <testcase name="user_login_ok_test()" classname="com.app.domain.usecases.auth.loginUserUseCase.LoginUseCaseTest" time="0.461"/>
+  <testcase name="user_login_null_test()" classname="com.app.domain.usecases.auth.loginUserUseCase.LoginUseCaseTest" time="0.004"/>
+  <system-out><![CDATA[10:44:23.579 [Test worker] DEBUG reactor.util.Loggers - Using Slf4j logging framework
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

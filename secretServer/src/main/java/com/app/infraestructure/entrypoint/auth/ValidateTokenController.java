@@ -2,6 +2,7 @@ package com.app.infraestructure.entrypoint.auth;
 
 
 import com.app.domain.model.response.ApiResponse;
+import com.app.domain.model.token.dto.TokenRequestDTO;
 import com.app.domain.model.util.Constant;
 import com.app.domain.usecases.auth.validateByToken.ValidateByTokenUseCase;
 import lombok.AllArgsConstructor;
