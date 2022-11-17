@@ -15,7 +15,7 @@ enzoic:
 bd:
   sp:
     createUser: CALL  secret_server.SP_CREATE_USER(:id,:name,:email,:password,:image,:role,:google);
-    createSecretPass: CALL insert_login(:in_secret_password_id,:in_secret_password_name,:in_secret_password_username,:in_secret_password_password,:in_secret_password_URI,:in_user_uid_fk);
+    createSecretPass: CALL SP_insert_login(:in_secret_password_id,:in_secret_password_name,:in_secret_password_username,:in_secret_password_password,:in_secret_password_URI,:in_user_uid_fk);
     deleteSecretPass: CALL SP_delete_login(:in_secret_password_id);
     updateSecretPass: CALL SP_update_login(:in_secret_password_id,:in_secret_password_name,:in_secret_password_username,:in_secret_password_password,:in_secret_password_URI);
     selectSecretPass: CALL SP_select_login_1(:in_StartIndex,:in_Count,:in_user_uid_fk );

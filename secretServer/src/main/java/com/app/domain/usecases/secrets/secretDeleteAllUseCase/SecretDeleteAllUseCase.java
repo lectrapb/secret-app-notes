@@ -28,11 +28,11 @@ public class SecretDeleteAllUseCase {
     private Mono<secretDeleteAllResponseDTO> prepareOkResponse(String id) {
         return Mono.fromCallable(secretDeleteAllResponseDTO::new)
                 .map(dto -> {
-                    if(id.equals(Constant.SUCCESSFUL_DELETE_ZERO_NOTE_CODE)){
-                        dto.setCode(Constant.SUCCESSFUL_DELETE_ZERO_NOTE_CODE);
+                    if(id.equals(Constant.SUCCESSFUL_DELETE_ZERO_ALL_CODE)){
+                        dto.setCode(Constant.SUCCESSFUL_DELETE_ZERO_ALL_CODE);
                         return dto;
                     }
-                    dto.setCode(Constant.SUCCESSFUL_DELETE_NOTE_CODE);
+                    dto.setCode(Constant.SUCCESSFUL_DELETE_ALL_CODE);
                     return dto;
                 });
     }

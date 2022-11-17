@@ -2,6 +2,7 @@ package com.app.infraestructure.entrypoint.secretPassword;
 
 import com.app.domain.model.response.ApiResponse;
 import com.app.domain.model.secretPassword.secretFindRequestDTO;
+import com.app.domain.model.secretPassword.secretFindResponseDTO;
 import com.app.domain.model.util.Constant;
 import com.app.domain.usecases.secrets.secretPassUseCase.SecretSearchUseCase;
 import lombok.AllArgsConstructor;
@@ -32,7 +33,7 @@ public class SearchPassController {
                         .body(new ApiResponse()
                                 .createOnSuccess()
                                 .setMessage(Constant.SUCCESSFUL_SELECT_PASSWORD_CODE)
-                                .setData(Constant.SECRET_SELECT, p, "SELECT")))
+                                .setData2(Constant.SECRET_SELECT, p.toArray())))
                 .onErrorResume(e -> Mono.just(e)
                         .flatMap(t ->{
                             ApiResponse apiResponse = new ApiResponse().createOnError(t.getMessage());

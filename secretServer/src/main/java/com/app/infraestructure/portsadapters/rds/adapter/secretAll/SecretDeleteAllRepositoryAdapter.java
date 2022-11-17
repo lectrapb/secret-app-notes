@@ -28,7 +28,7 @@ public class SecretDeleteAllRepositoryAdapter implements SecretDeleteAllReposito
         try{
             int delete = jdbcTemplate.update(sql.toString(), source);
             if(delete < 1){
-                return Mono.just(Constant.SUCCESSFUL_DELETE_ZERO_NOTE_CODE);
+                return Mono.just(Constant.SUCCESSFUL_DELETE_ZERO_ALL_CODE);
             }
         }catch(Exception e){
             throw new BusinessException(Constant.ERROR_SECRET_NOTE_CODE);
@@ -36,6 +36,6 @@ public class SecretDeleteAllRepositoryAdapter implements SecretDeleteAllReposito
             ConnectionManager.closeJdbc(jdbcTemplate);
         }
 
-        return Mono.just(Constant.SUCCESSFUL_DELETE_NOTE_CODE);
+        return Mono.just(Constant.SUCCESSFUL_DELETE_ALL_CODE);
     }
 }

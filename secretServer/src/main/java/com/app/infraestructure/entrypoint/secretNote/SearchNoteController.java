@@ -34,7 +34,7 @@ public class SearchNoteController {
                         .body(new ApiResponse()
                                 .createOnSuccess()
                                 .setMessage(Constant.SUCCESSFUL_SECRET_NOTE_CODE)
-                                .setData(Constant.NOTE_SELECT,p,"SELECT")))
+                                .setData3(Constant.NOTE_SELECT,p.toArray())))
                 .onErrorResume(e -> Mono.just(e)
                         .flatMap(t ->{
                             ApiResponse apiResponse = new ApiResponse().createOnError(t.getMessage());

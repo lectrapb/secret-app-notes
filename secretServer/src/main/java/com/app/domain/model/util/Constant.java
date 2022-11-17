@@ -45,6 +45,8 @@ public class Constant {
     public static final String DESCRIPTION_SUCCESSFUL_UPDATE_ZERO_NOTE =" 0 Rows Affected  ";
     public static final String DESCRIPTION_SUCCESSFUL_VERIFY_PASS_NOTE =" Password is not compromised  ";
     public static final String DESCRIPTION_SUCCESSFUL_INSECURE_PASS_NOTE =" Password is compromised  ";
+    public static final String DESCRIPTION_SUCCESSFUL_ZERO_DELETE_ALL = " 0 Rows Affected ";
+    public static final String DESCRIPTION_SUCCESSFUL_DELETE_ALL = " Successful delete all secret ";
      //ERROR CODES
      public static final String ERROR_MISSING_ARGUMENTS_CODE = "ER-401";
      public static final String ERROR_SIGNUP_USER_CODE = "ER-402";
@@ -69,6 +71,8 @@ public class Constant {
      public static final String SUCCESSFUL_DELETE_NOTE_CODE = "860-1";
      public static final String SUCCESSFUL_VERIFY_PASSWORD_CODE = "861-1";
      public static final String SUCCESSFUL_INSECURE_PASSWORD_CODE = "862-1";
+     public static final String SUCCESSFUL_DELETE_ZERO_ALL_CODE = "863-1";
+     public static final String SUCCESSFUL_DELETE_ALL_CODE = "864-1";
      public static final String SUCCESSFUL_LOGIN_USER_CODE = "800-2";
 
      //APP-TYPES
@@ -124,6 +128,10 @@ public class Constant {
                 new Message(PATH_VERIFY_PASS, DESCRIPTION_SUCCESSFUL_VERIFY_PASS_NOTE, TITLE_SUCCESSFUL_OPERATION, 200  ));
         successfulMessages.put(SUCCESSFUL_INSECURE_PASSWORD_CODE,
                 new Message(PATH_VERIFY_PASS, DESCRIPTION_SUCCESSFUL_INSECURE_PASS_NOTE, TITLE_SUCCESSFUL_OPERATION, 200  ));
+        successfulMessages.put(SUCCESSFUL_DELETE_ZERO_ALL_CODE,
+                new Message(PATH_DELETE_ALL_SECRET, DESCRIPTION_SUCCESSFUL_ZERO_DELETE_ALL, TITLE_SUCCESSFUL_OPERATION, 200  ));
+        successfulMessages.put(SUCCESSFUL_DELETE_ALL_CODE,
+                new Message(PATH_DELETE_ALL_SECRET, DESCRIPTION_SUCCESSFUL_DELETE_ALL, TITLE_SUCCESSFUL_OPERATION, 200  ));
     }
 
     public static Error getErrorMessage(String code){
