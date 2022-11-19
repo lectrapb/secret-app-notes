@@ -4,6 +4,8 @@ import com.app.config.BusinessException;
 import com.app.domain.model.secretPassword.gateway.SecretPasswordRepository;
 import com.app.domain.model.secretPassword.secretPassword;
 import com.app.domain.model.secretPassword.secretPasswordRequestDTO;
+import com.app.domain.model.token.gateway.EncryptService;
+import org.jose4j.lang.JoseException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -24,6 +26,9 @@ class SecretCreatePassUseCaseTest {
     @Mock
     private SecretPasswordRepository secretPasswordRepository;
 
+    @Mock
+    private static EncryptService encryptService;
+
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
@@ -38,7 +43,7 @@ class SecretCreatePassUseCaseTest {
     }
 
     @Test
-    void registerPassword() {
+    void registerPassword() throws JoseException {
         when(secretPasswordRepository.save(isA(secretPassword.class))).thenReturn(Mono.empty());
         var register = passUseCase.registerPassword(getResquestDTO());
         StepVerifier.create(register)
@@ -46,12 +51,12 @@ class SecretCreatePassUseCaseTest {
                 .verifyComplete();
     }
 
-    private static secretPasswordRequestDTO getResquestDTO() {
+    private static secretPasswordRequestDTO getResquestDTO() throws JoseException {
 
         secretPasswordRequestDTO requestDTO = new secretPasswordRequestDTO();
         requestDTO.setName("algo");
         requestDTO.setUsername("algo");
-        requestDTO.setPassword("algo");
+        requestDTO.setPassword(encryptService.encrypt(requestDTO.getPassword()));
         requestDTO.setURI("algo");
         requestDTO.setUser_uid("algo");
 

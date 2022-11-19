@@ -6,6 +6,8 @@ import com.app.domain.model.secretNote.secretNote;
 import com.app.domain.model.secretNote.secretNoteRequestDTO;
 import com.app.domain.model.secretPassword.secretPassword;
 import com.app.domain.model.secretPassword.secretUpdateRequestDTO;
+import com.app.domain.model.token.gateway.EncryptService;
+import org.jose4j.lang.JoseException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -25,6 +27,8 @@ class SecretCreateUseCaseTest {
     private SecretCreateUseCase createUseCase;
     @Mock
     private SecretCreateNoteRepository secretCreateNoteRepository;
+    @Mock
+    private static EncryptService encryptService;
 
     @BeforeEach
     void setUp() {
@@ -32,7 +36,7 @@ class SecretCreateUseCaseTest {
     }
 
     @Test
-    void registerNote() {
+    void registerNote() throws JoseException {
         when(secretCreateNoteRepository.save(isA(secretNote.class))).thenReturn(Mono.empty());
         var update = createUseCase.registerNote(getResquestCreateDTO());
         StepVerifier.create(update)
@@ -48,11 +52,11 @@ class SecretCreateUseCaseTest {
                 .verify();
     }
 
-    private static secretNoteRequestDTO getResquestCreateDTO() {
+    private static secretNoteRequestDTO getResquestCreateDTO() throws JoseException {
 
         secretNoteRequestDTO requestDTO = new secretNoteRequestDTO();
         requestDTO.setName("algo");
-        requestDTO.setNotes("lasdl");
+        requestDTO.setNotes(encryptService.encrypt(requestDTO.getNotes()));
         requestDTO.setUser_uid("1");
         return  requestDTO;
     }

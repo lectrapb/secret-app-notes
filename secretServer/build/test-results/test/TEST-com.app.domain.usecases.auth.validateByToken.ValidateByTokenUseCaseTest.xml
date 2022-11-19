@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.app.domain.usecases.auth.validateByToken.ValidateByTokenUseCaseTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-10-22T01:37:38" hostname="Home" time="0.015">
+<testsuite name="com.app.domain.usecases.auth.validateByToken.ValidateByTokenUseCaseTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-11-19T17:30:45" hostname="Home" time="0.016">
   <properties/>
-  <testcase name="validate_bytoken_null_test()" classname="com.app.domain.usecases.auth.validateByToken.ValidateByTokenUseCaseTest" time="0.015"/>
+  <testcase name="validate_bytoken_null_test()" classname="com.app.domain.usecases.auth.validateByToken.ValidateByTokenUseCaseTest" time="0.016"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

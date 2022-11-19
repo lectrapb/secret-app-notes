@@ -5,6 +5,8 @@ import com.app.domain.model.secretPassword.gateway.SecretUpdatePassRepository;
 import com.app.domain.model.secretPassword.secretFindRequestDTO;
 import com.app.domain.model.secretPassword.secretPassword;
 import com.app.domain.model.secretPassword.secretUpdateRequestDTO;
+import com.app.domain.model.token.gateway.EncryptService;
+import org.jose4j.lang.JoseException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -24,6 +26,8 @@ class SecretUpdateUseCaseTest {
     private SecretUpdateUseCase updateUseCase;
     @Mock
     private SecretUpdatePassRepository updatePassRepository;
+    @Mock
+    private static EncryptService encryptService;
 
     @BeforeEach
     void setUp() {
@@ -31,7 +35,7 @@ class SecretUpdateUseCaseTest {
     }
 
     @Test
-    void updatePassword() {
+    void updatePassword() throws JoseException {
         when(updatePassRepository.update(isA(secretPassword.class))).thenReturn(Mono.just("123"));
         var update = updateUseCase.updatePassword(getResquestUpdateDTO());
         StepVerifier.create(update)
@@ -40,31 +44,31 @@ class SecretUpdateUseCaseTest {
     }
 
     @Test
-    public void givenNull_updateThrows(){
+    public void givenNull_updateThrows() throws JoseException {
         var validate = updateUseCase.updatePassword(getResquestUpdateNullDTO());
         StepVerifier.create(validate)
                 .expectErrorMatches(e -> e instanceof BusinessException)
                 .verify();
     }
 
-    private static secretUpdateRequestDTO getResquestUpdateDTO() {
+    private static secretUpdateRequestDTO getResquestUpdateDTO() throws JoseException {
 
         secretUpdateRequestDTO requestDTO = new secretUpdateRequestDTO();
         requestDTO.setId("123");
         requestDTO.setName("algo");
         requestDTO.setUsername("algo");
-        requestDTO.setPassword("algo");
+        requestDTO.setPassword(encryptService.encrypt(requestDTO.getPassword()));
         requestDTO.setURI("localhost");
         return  requestDTO;
     }
 
-    private static secretUpdateRequestDTO getResquestUpdateNullDTO() {
+    private static secretUpdateRequestDTO getResquestUpdateNullDTO() throws JoseException {
 
         secretUpdateRequestDTO requestDTO = new secretUpdateRequestDTO();
         requestDTO.setId(null);
         requestDTO.setName(null);
         requestDTO.setUsername("algo");
-        requestDTO.setPassword("algo");
+        requestDTO.setPassword(encryptService.encrypt(requestDTO.getPassword()));
         requestDTO.setURI("localhost");
 
         return  requestDTO;

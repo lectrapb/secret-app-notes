@@ -4,6 +4,8 @@ import com.app.config.BusinessException;
 import com.app.domain.model.secretNote.gateway.SecretUpdateNoteRepository;
 import com.app.domain.model.secretNote.secretNote;
 import com.app.domain.model.secretNote.secretUpdateNoteRequestDTO;
+import com.app.domain.model.token.gateway.EncryptService;
+import org.jose4j.lang.JoseException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,6 +24,8 @@ class SecretUpdateNoteUseCaseTest {
     private SecretUpdateNoteUseCase updateNoteUseCase;
     @Mock
     private SecretUpdateNoteRepository updateNoteRepository;
+    @Mock
+    private static EncryptService encryptService;
 
     @BeforeEach
     void setUp() {
@@ -29,7 +33,7 @@ class SecretUpdateNoteUseCaseTest {
     }
 
     @Test
-    void updateNote() {
+    void updateNote() throws JoseException {
         when(updateNoteRepository.update(isA(secretNote.class))).thenReturn(Mono.just("123"));
         var update = updateNoteUseCase.updateNote(getResquestUpdateNoteDTO());
         StepVerifier.create(update)
@@ -45,12 +49,12 @@ class SecretUpdateNoteUseCaseTest {
                 .verify();
     }
 
-    private static secretUpdateNoteRequestDTO getResquestUpdateNoteDTO() {
+    private static secretUpdateNoteRequestDTO getResquestUpdateNoteDTO() throws JoseException {
 
         secretUpdateNoteRequestDTO requestDTO = new secretUpdateNoteRequestDTO();
         requestDTO.setId("123");
         requestDTO.setName("algo");
-        requestDTO.setNotes("16234");
+        requestDTO.setNotes(encryptService.encrypt(requestDTO.getNotes()));
         return  requestDTO;
     }
 
